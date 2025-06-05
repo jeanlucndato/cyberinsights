@@ -1,40 +1,39 @@
-/**
-* Template Name: Visible
-* Template URL: https://bootstrapmade.com/visible-bootstrap-agency-template/
-* Updated: May 22 2025 with Bootstrap v5.3.6
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
-/* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Abel",  sans-serif;
-  --nav-font: "Mukta",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Abel", sans-serif;
+  --nav-font: "Mukta", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #070d1a; /* Background color for the entire website, including individual sections */
-  --default-color: #e4edf5; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #f2f8fe; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #10a3d7; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #131825; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+  --background-color: #070d1a;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #e4edf5;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #f2f8fe;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #10a3d7;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #131825;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #e4edf5;  /* The default color of the main navmenu links */
-  --nav-hover-color: #10a3d7; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: rgba(22, 29, 44, 0.95); /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: rgba(23, 30, 47, 0.95); /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: rgba(215, 226, 235, 0.645); /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #e4edf5;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #10a3d7;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: rgba(22, 29, 44, 0.95);
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: rgba(23, 30, 47, 0.95);
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: rgba(215, 226, 235, 0.645);
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #ffffff;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -56,6 +55,288 @@
 :root {
   scroll-behavior: smooth;
 }
+
+/* le css des cartes lien blog */
+/* Variables de main.css (assurez-vous qu'elles sont déjà définies globalement ou incluez votre main.css) */
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Abel", sans-serif;
+  --nav-font: "Mukta", sans-serif;
+  --background-color: #070d1a;
+  --default-color: #e4edf5;
+  --heading-color: #f2f8fe;
+  --accent-color: #10a3d7;
+  --surface-color: #131d33;
+  /* Définitions RGB pour les overlays (nécessaires pour les couleurs transparentes) */
+  --surface-color-rgb: 19, 29, 51;
+  --accent-color-rgb: 16, 163, 215;
+}
+
+/* Styles généraux pour le corps, si cette section est insérée directement.
+       Ces styles devraient idéalement être dans un fichier CSS externe ou un bloc <style> global
+       si ce n'est pas déjà le cas dans votre `main.css`. */
+body {
+  font-family: var(--default-font);
+  color: var(--default-color);
+  background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), black 20%);
+}
+
+/* Section Title Styles */
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.section-title .description-title {
+  color: var(--accent-color);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title p {
+  margin-bottom: 0;
+  color: var(--default-color);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.1rem;
+}
+
+/* Portfolio Item Container (the row) */
+.portfolio-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Center items if they don't fill the row */
+}
+
+/* Portfolio Item Styles */
+.portfolio-item {
+  margin-bottom: 2rem;
+  /* Add some space between items */
+  opacity: 0;
+  /* Initialement invisible pour l'animation d'apparition */
+  transform: translateY(20px);
+  /* Légèrement décalé vers le bas */
+  transition: all 0.3s ease-in-out;
+  /* Base transition for general properties */
+  will-change: opacity, transform;
+  /* Optimize for these animations */
+}
+
+/* Animation d'apparition */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-item.animate-item {
+  animation: fadeInSlideUp 0.6s ease-out forwards;
+}
+
+/* Délai pour l'apparition des éléments du portfolio */
+.portfolio-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.portfolio-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.portfolio-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.portfolio-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+
+.portfolio-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: radial-gradient(circle at top left, var(--surface-color) 0%, color-mix(in srgb, var(--surface-color), black 10%) 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  /* Ensure consistent height for items */
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  /* Indicate it's clickable */
+  will-change: transform, box-shadow;
+  /* Optimize for these animations */
+}
+
+.portfolio-wrap a.img-link {
+  display: block;
+  /* Make the entire image area clickable */
+  line-height: 0;
+  /* Remove extra space below image */
+  border-radius: 0.75rem 0.75rem 0 0;
+  /* Top border radius for image wrapper */
+  overflow: hidden;
+  /* Ensure image corners are rounded */
+}
+
+.portfolio-wrap img {
+  width: 100%;
+  height: 220px;
+  /* Fixed height for image */
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  /* Smooth zoom on image */
+  border-radius: 0.75rem 0.75rem 0 0;
+  /* Top border radius for image */
+}
+
+.portfolio-wrap:hover {
+  transform: translateY(-8px) scale(1.02);
+  /* Lift and slight scale */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 0 4px var(--accent-color);
+  /* Enhanced shadow with accent color border */
+}
+
+.portfolio-wrap:hover img {
+  transform: scale(1.05);
+  /* Slight zoom on image */
+}
+
+.portfolio-info {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: rgba(var(--surface-color-rgb), 0.9);
+  /* Semi-transparent overlay using surface color */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Align content to the bottom */
+  color: var(--default-color);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+  border-radius: 0.75rem;
+  /* Match card radius */
+  transform: translateY(100%);
+  /* Start hidden below the card */
+}
+
+.portfolio-wrap:hover .portfolio-info {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  /* Slide up into view */
+}
+
+.portfolio-info .content {
+  padding: 10px;
+}
+
+.portfolio-info h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--heading-color);
+}
+
+.portfolio-info .category {
+  color: var(--accent-color);
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.portfolio-info .portfolio-links {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.portfolio-info .portfolio-links a {
+  color: var(--default-color);
+  font-size: 22px;
+  display: inline-block;
+  line-height: 1;
+  background-color: rgba(var(--accent-color-rgb), 0.7);
+  /* Use accent color for icon background */
+  width: 38px;
+  /* Larger touch target */
+  height: 38px;
+  /* Larger touch target */
+  border-radius: 50%;
+  text-align: center;
+  padding: 8px 0;
+  /* Adjust padding for icon centering */
+  margin-left: 8px;
+  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* Subtle shadow for button */
+}
+
+.portfolio-info .portfolio-links a:hover {
+  background-color: var(--accent-color);
+  /* Solid accent color on hover */
+  color: white;
+  transform: translateY(-2px);
+  /* Slight lift on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-info .portfolio-links a:active {
+  transform: translateY(0);
+  /* Press effect on click */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Bootstrap Icons (bi) - ensure you have Bootstrap Icons CDN linked in your <head> */
+/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> */
+.bi {
+  vertical-align: middle;
+  /* Align icons nicely */
+  font-size: 1.25rem;
+}
+
+/* fin des css carts */
 
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
