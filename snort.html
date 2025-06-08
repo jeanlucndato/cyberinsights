@@ -39,7 +39,7 @@
     <link href="assets/css/main.css" rel="stylesheet" />
   </head>
 
-  <body class="portfolio-details-page">
+  <body class="index-page">
     <header
       id="header"
       class="header d-flex align-items-center position-relative"
@@ -53,45 +53,64 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero" class="active">Accueil</a></li>
-            <li><a href="#about">À Propos</a></li>
-            <li><a href="#services">Domaines de Recherche</a></li>
-            <li><a href="#portfolio">Projets & Études de Cas</a></li>
-            <li class="dropdown">
-              <a href="#"
-                ><span>Catégories de Blog</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i
-              ></a>
-              <ul>
-                <li><a href="#">Tests d'intrusion</a></li>
-                <li class="dropdown">
-                  <a href="#"
-                    ><span>Analyses Approfondies</span>
-                    <i class="bi bi-chevron-down toggle-dropdown"></i
-                  ></a>
-                  <ul>
-                    <li><a href="#">Analyse de Malware</a></li>
-                    <li><a href="#">Explications de Vulnérabilités</a></li>
-                    <li><a href="#">Investigation Réseau</a></li>
-                    <li><a href="#">Compte-rendus CTF</a></li>
-                    <li><a href="#">Revues d'Outils</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Actualités Sécurité</a></li>
-                <li><a href="#">Articles d'Opinion</a></li>
-                <li><a href="#">Ressources</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#hero" class="active">Accueil</a></li>
+            <li><a href="index.html#apropos" class="active">Apropos</a></li>
+            <li><a href="index.html#portfolio">Projets & Études de Cas</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
     </header>
 
-    <!-- main -->
-    <h1>J'ai pas encore Fini</h1>
-    <!-- fin main -->
+    <main class="main">
+      <!-- Page Title -->
+      <div class="page-title" data-aos="fade">
+        <div class="heading">
+          <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+              <div class="col-lg-8">
+                <h1>Starter Page</h1>
+                <p class="mb-0">
+                  Odio et unde deleniti. Deserunt numquam exercitationem.
+                  Officiis quo odio sint voluptas consequatur ut a odio
+                  voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi
+                  ratione sint. Sit quaerat ipsum dolorem.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="breadcrumbs">
+          <div class="container">
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <li class="current">Starter Page</li>
+            </ol>
+          </div>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <!-- Starter Section Section -->
+      <section id="starter-section" class="starter-section section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <span class="description-title">Starter Section</span>
+          <h2>Starter Section</h2>
+          <p>
+            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
+            consectetur velit
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container" data-aos="fade-up">
+          <p>Use this page as a starter for your own custom pages.</p>
+        </div>
+      </section>
+      <!-- /Starter Section Section -->
+    </main>
 
     <footer id="footer" class="footer">
       <div class="container footer-top">
@@ -181,5 +200,24 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <!-- script pour les cartes de liens  -->
+    <!-- Script pour déclencher l'animation d'apparition des cartes une fois le DOM chargé -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const portfolioItems = document.querySelectorAll(".portfolio-item");
+        portfolioItems.forEach((item) => {
+          item.classList.add("animate-item");
+        });
+      });
+    </script>
+    <!-- Script pour déclencher l'animation d'apparition des cartes une fois le DOM chargé -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const profileCards = document.querySelectorAll(".profile-card");
+        profileCards.forEach((card) => {
+          card.classList.add("animate-card");
+        });
+      });
+    </script>
   </body>
 </html>
