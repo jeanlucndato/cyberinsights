@@ -368,6 +368,93 @@ h6 {
   font-family: var(--heading-font);
 }
 
+/* it */
+/* Styles spécifiques pour le carrousel pour un rendu plus esthétique */
+.project-overview {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: var(--surface-color);
+  /* Utilise la couleur de surface définie dans main.css */
+  color: var(--default-color);
+}
+
+.project-overview h2 {
+  color: var(--heading-color);
+}
+
+.project-overview .lead {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+  padding: 20px 0;
+  /* Ajoute un peu d'espace vertical autour du carrousel */
+}
+
+.swiper-slide {
+  text-align: center;
+  background: var(--background-color);
+  /* Couleur de fond pour les slides individuelles */
+  border-radius: 8px;
+  overflow: hidden;
+  /* Pour que les images ne débordent pas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* Ombre douce */
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide:hover {
+  transform: translateY(-5px);
+  /* Effet léger au survol */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Supprime l'espace sous l'image */
+  border-radius: 8px;
+  /* Bords arrondis pour les images aussi */
+}
+
+/* Personnalisation des boutons de navigation Swiper */
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--accent-color) !important;
+  font-size: 2.5rem !important;
+}
+
+/* Personnalisation de la pagination Swiper */
+.swiper-pagination-bullet {
+  background: color-mix(in srgb, var(--default-color), transparent 50%) !important;
+  opacity: 0.7;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-color) !important;
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 767px) {
+  .project-overview .lead {
+    font-size: 1rem;
+  }
+}
+
+/* it */
+
+
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
