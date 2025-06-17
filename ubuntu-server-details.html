@@ -63,6 +63,526 @@
       </div>
     </header>
     <!-- main -->
+    <section id="mon-lab-soc-complet" class="section-bg py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header text-center mb-5">
+          <h2 class="heading-font">
+            <i class="bi bi-person-workspace me-3 accent-color"></i> Mon Lab SOC
+            : Infrastructure, Détection & Visualisation
+          </h2>
+          <p class="lead default-color">
+            Découvrez l'architecture complète de notre environnement de
+            simulation, ses composants clés et nos capacités de détection des
+            menaces.
+          </p>
+        </div>
+
+        <div
+          class="section-divider mb-5 pb-4 border-bottom border-secondary"
+          data-aos="fade-up"
+        >
+          <h3 class="heading-font mb-4 text-center">
+            <i class="bi bi-server me-2 accent-color"></i> Infrastructure Cible
+            & Administration
+          </h3>
+          <p class="text-center default-color lead mb-4">
+            Pilier de notre lab SOC, cette sous-section détaille les composants
+            clés de notre environnement d'entreprise simulé.
+          </p>
+          <div class="row gy-4">
+            <div
+              class="col-lg-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-4 surface-color rounded shadow-sm"
+              >
+                <div class="service-header mb-4">
+                  <h4 class="heading-font accent-color">
+                    <i class="bi bi-windows me-2"></i> Windows Server 2022
+                    (DC/DNS/DHCP)
+                  </h4>
+                  <p class="default-color lead">
+                    Le cœur de notre infrastructure Active Directory.
+                  </p>
+                </div>
+                <div class="service-content default-color">
+                  <p>
+                    Ce contrôleur de domaine Windows Server 2022 a été
+                    méticuleusement configuré pour émuler une infrastructure
+                    d'entreprise réaliste. Il intègre nativement
+                    <strong>Active Directory</strong> pour une gestion
+                    granulaire des utilisateurs, des groupes et, crucialement
+                    pour nos simulations, des
+                    <strong>GPO (Group Policy Objects)</strong>. L'intégration
+                    des services <strong>DNS</strong> et
+                    <strong>DHCP</strong> assure une résolution de noms et une
+                    attribution d'adresses IP cohérentes au sein du réseau, des
+                    éléments souvent ciblés lors d'attaques réelles.
+                  </p>
+                  <p>
+                    <strong>Instrumentation pour la Télémétrie SOC :</strong>
+                    J'ai instrumenté ce serveur avec <strong>Sysmon</strong>.
+                    Cette instrumentation est fondamentale pour un analyste SOC
+                    car elle nous fournit une télémétrie événementielle de bas
+                    niveau et détaillée. Cela nous permet de simuler et
+                    d'analyser des attaques d'élévation de privilèges complexes,
+                    telles que le <em>Pass-the-Hash</em> et le
+                    <em>Kerberoasting</em>. En examinant les logs générés par
+                    Sysmon, nous pouvons étudier précisément les traces
+                    d'authentification, les mouvements latéraux via des outils
+                    comme Impacket, et développer des règles de détection
+                    robustes pour ces techniques adverses. C'est notre point
+                    d'observation privilégié pour comprendre le comportement des
+                    menaces internes et externes.
+                  </p>
+                  <div class="icon-group mt-3 text-center">
+                    <i
+                      class="bi bi-fingerprint icon-large accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Active Directory"
+                    ></i>
+                    <i
+                      class="bi bi-broadcast icon-large accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="DNS/DHCP"
+                    ></i>
+                    <i
+                      class="bi bi-activity icon-large accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Sysmon Telemetry"
+                    ></i>
+                    <i
+                      class="bi bi-file-earmark-bar-graph icon-large accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Group Policy Objects"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-4 surface-color rounded shadow-sm"
+              >
+                <div class="service-header mb-4">
+                  <h4 class="heading-font accent-color">
+                    <i class="bi bi-mortarboard-fill me-2"></i> Objectifs SOC &
+                    Apprentissage
+                  </h4>
+                  <p class="default-color lead">
+                    Comprendre, Détecter, Réagir.
+                  </p>
+                </div>
+                <div class="service-content default-color">
+                  <p>
+                    Cette infrastructure n'est pas seulement un environnement
+                    technique ; c'est un terrain d'entraînement stratégique pour
+                    tout analyste SOC. Nos objectifs incluent :
+                  </p>
+                  <ul class="list-unstyled">
+                    <li class="mb-2">
+                      <i class="bi bi-journal-text me-2 accent-color"></i>
+                      <strong>Analyse de Logs Avancée :</strong> Maîtriser
+                      l'interprétation des événements Sysmon, de l'Active
+                      Directory et des logs réseau pour identifier les activités
+                      suspectes.
+                    </li>
+                    <li class="mb-2">
+                      <i class="bi bi-shield-lock-fill me-2 accent-color"></i>
+                      <strong>Détection de Menaces :</strong> Développer et
+                      tester des règles de détection (par exemple, avec Sigma ou
+                      YARA) basées sur les TTPs (Tactics, Techniques, and
+                      Procedures) des attaquants.
+                    </li>
+                    <li class="mb-2">
+                      <i
+                        class="bi bi-patch-exclamation-fill me-2 accent-color"
+                      ></i>
+                      <strong>Réponse aux Incidents :</strong> Simuler des
+                      scénarios d'incidents pour pratiquer les étapes de
+                      confinement, éradication et récupération.
+                    </li>
+                    <li class="mb-2">
+                      <i class="bi bi-tools me-2 accent-color"></i>
+                      <strong>Familiarisation avec les Outils :</strong>
+                      Acquérir une expertise pratique avec des outils
+                      open-source et commerciaux utilisés par les attaquants et
+                      les défenseurs.
+                    </li>
+                  </ul>
+                  <p>
+                    Chaque composant de ce lab est conçu pour renforcer nos
+                    compétences analytiques et opérationnelles en matière de
+                    cybersécurité.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="section-divider mt-5 mb-5 pb-4 border-bottom border-secondary"
+          data-aos="fade-up"
+        >
+          <h3 class="heading-font mb-4 text-center">
+            <i class="bi bi-diagram-3-fill me-2 accent-color"></i> Architecture
+            Détaillée du Lab : Détection & Cibles Applicatives
+          </h3>
+          <p class="text-center default-color lead mb-4">
+            Focus sur nos capacités de "Blue Team" et nos plateformes de test
+            d'attaques web.
+          </p>
+          <div class="row gy-4">
+            <div
+              class="col-lg-12 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-4 surface-color rounded shadow-sm"
+              >
+                <div class="service-header mb-4">
+                  <h4 class="heading-font accent-color">
+                    <i class="bi bi-ubuntu me-2"></i> Ubuntu Server LTS (ELK,
+                    Wazuh, Web Apps)
+                  </h4>
+                  <p class="default-color lead">
+                    Le cœur de nos capacités de "Blue Team" et nos cibles
+                    d'entraînement web.
+                  </p>
+                  <div class="icon-group mt-3 text-center">
+                    <i
+                      class="bi bi-ubuntu icon-large-text accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Ubuntu Server"
+                    ></i>
+                    <i
+                      class="bi bi-box-seam icon-large-text accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="ELK Stack (Elasticsearch, Logstash, Kibana)"
+                    ></i>
+                    <i
+                      class="bi bi-shield-check icon-large-text accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Wazuh SIEM/EDR"
+                    ></i>
+                    <i
+                      class="bi bi-globe-americas icon-large-text accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Nginx Web Server"
+                    ></i>
+                    <i
+                      class="bi bi-bug-fill icon-large-text accent-color mx-2"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="OWASP DVWA (Damn Vulnerable Web Application)"
+                    ></i>
+                  </div>
+                </div>
+                <div class="service-content default-color">
+                  <p>
+                    Ce serveur Ubuntu LTS (Long Term Support) constitue la
+                    pierre angulaire de nos capacités de
+                    <strong>Blue Team</strong>. Il est configuré pour une
+                    surveillance robuste et l'analyse de données de sécurité.
+                    C'est ici que nos équipes SOC s'entraînent à la détection et
+                    à la réponse.
+                  </p>
+
+                  <div class="row mt-4">
+                    <div class="col-md-6">
+                      <h5 class="heading-font accent-color">
+                        <i class="bi bi-bar-chart-fill me-2"></i> Stack ELK
+                        (Elasticsearch, Logstash, Kibana) :
+                      </h5>
+                      <p>
+                        J'ai méticuleusement hébergé la stack ELK pour
+                        l'ingestion centralisée, l'analyse et la visualisation
+                        de logs. Cela inclut les logs système, les logs
+                        applicatifs et, surtout, les logs de sécurité provenant
+                        de nos endpoints et de l'infrastructure réseau. Kibana
+                        nous fournit des tableaux de bord interactifs essentiels
+                        pour la chasse aux menaces (threat hunting) et
+                        l'investigation des incidents.
+                      </p>
+                      <img
+                        src="URL_IMAGE_KIBANA_DASHBOARD"
+                        alt="Tableau de bord Kibana"
+                        class="img-fluid rounded shadow-sm mt-2 mb-3"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="heading-font accent-color">
+                        <i class="bi bi-search me-2"></i> Wazuh (SIEM/EDR
+                        Open-Source) :
+                      </h5>
+                      <p>
+                        Pour une surveillance des endpoints en temps réel, j'ai
+                        déployé <strong>Wazuh</strong>. Ce SIEM/EDR open-source
+                        est configuré pour le File Integrity Monitoring (FIM),
+                        la détection de vulnérabilités, l'analyse de la
+                        configuration système, et la détection d'anomalies de
+                        comportement. Il nous permet d'avoir une visibilité
+                        profonde sur l'activité des hôtes, cruciale pour
+                        détecter les menaces internes ou les compromissions
+                        d'endpoints.
+                      </p>
+                      <img
+                        src="URL_IMAGE_WAZUH_DASHBOARD"
+                        alt="Tableau de bord Wazuh"
+                        class="img-fluid rounded shadow-sm mt-2 mb-3"
+                      />
+                    </div>
+                  </div>
+
+                  <h5 class="heading-font accent-color mt-4">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    Hébergement d'Applications Web Vulnérables :
+                  </h5>
+                  <p>
+                    Le serveur Ubuntu sert également d'hôte pour des
+                    applications web intentionnellement vulnérables, notamment
+                    <strong
+                      >Nginx avec OWASP DVWA (Damn Vulnerable Web
+                      Application)</strong
+                    >. Cela nous permet de simuler des attaques web courantes
+                    (ex: Injections SQL, XSS, Inclusion de Fichiers) dans un
+                    environnement contrôlé. L'objectif est d'observer leurs
+                    empreintes dans les logs, de comprendre comment les WAF (Web
+                    Application Firewalls) fonctionnent (ou non), et de
+                    développer des règles de détection spécifiques à ces
+                    vecteurs d'attaque. C'est un terrain de jeu inestimable pour
+                    nos tests d'intrusion et nos exercices de défense
+                    applicative.
+                  </p>
+                  <img
+                    src="URL_IMAGE_DVWA_INTERFACE"
+                    alt="Interface OWASP DVWA"
+                    class="img-fluid rounded shadow-sm mt-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-divider mt-5" data-aos="fade-up">
+          <h3 class="heading-font mb-4 text-center">
+            <i class="bi bi-image-fill me-2 accent-color"></i> Visuels Clés du
+            Lab SOC
+          </h3>
+          <p class="text-center default-color lead mb-4">
+            Une galerie d'images pour illustrer concrètement les différents
+            composants et outils de notre lab.
+          </p>
+          <div class="row gy-4 justify-content-center">
+            <div
+              class="col-lg-8 col-md-10 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-camera me-2"></i> Vue d'ensemble du Lab
+                </h4>
+                <img
+                  src="http://googleusercontent.com/image_generation_content/0"
+                  alt="Vue d'ensemble d'un Lab SOC"
+                  class="img-fluid rounded shadow-sm mb-3"
+                />
+                <p class="default-color">
+                  Illustration de l'environnement de travail typique d'un
+                  analyste SOC, tel qu'émulé dans notre lab.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-laptop me-2"></i> Interface Windows Server
+                  2022
+                </h4>
+                <img
+                  src="URL_IMAGE_WINDOWS_SERVER_OS"
+                  alt="Capture d'écran Windows Server 2022"
+                  class="img-fluid rounded shadow-sm mb-3"
+                />
+                <p class="default-color">
+                  Interface utilisateur de notre contrôleur de domaine, montrant
+                  par exemple la console Server Manager ou Active Directory
+                  Users and Computers.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-gear-fill me-2"></i> Configuration GPO
+                </h4>
+                <img
+                  src="URL_IMAGE_GPO_EXAMPLE"
+                  alt="Exemple de GPO"
+                  class="img-fluid rounded shadow-sm mb-3"
+                />
+                <p class="default-color">
+                  Exemple d'une capture d'écran d'une GPO spécifique configurée
+                  pour des tests de sécurité (par exemple, des restrictions de
+                  logiciel ou des politiques de mot de passe).
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-file-earmark-code-fill me-2"></i> Télémétrie
+                  Sysmon
+                </h4>
+                <img
+                  src="URL_IMAGE_SYSMON_LOGS"
+                  alt="Exemple de logs Sysmon"
+                  class="img-fluid rounded shadow-sm mb-3"
+                />
+                <p class="default-color">
+                  Visualisation des événements Sysmon (par exemple, dans
+                  l'Observateur d'événements Windows ou un SIEM), montrant la
+                  richesse des données collectées.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-terminal-fill me-2"></i> Outil de Simulation
+                  d'Attaque (Impacket)
+                </h4>
+                <img
+                  src="URL_IMAGE_IMPACKET_CLI"
+                  alt="Interface Impacket CLI"
+                  class="img-fluid rounded shadow-sm mb-3"
+                />
+                <p class="default-color">
+                  Capture d'écran de l'utilisation d'un outil comme Impacket,
+                  démontrant un mouvement latéral ou une tentative d'élévation
+                  de privilèges.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-bar-chart-line-fill me-2"></i> Tableau de bord
+                  Kibana
+                </h4>
+                <img
+                  src="URL_IMAGE_KIBANA_DASHBOARD"
+                  alt="Tableau de bord Kibana"
+                  class="img-fluid rounded shadow-sm mt-2 mb-3"
+                />
+                <p class="default-color">
+                  Un aperçu de notre interface de visualisation de logs
+                  centralisée via Kibana.
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="700"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-shield-shaded me-2"></i> Console Wazuh
+                </h4>
+                <img
+                  src="URL_IMAGE_WAZUH_DASHBOARD"
+                  alt="Tableau de bord Wazuh"
+                  class="img-fluid rounded shadow-sm mt-2 mb-3"
+                />
+                <p class="default-color">
+                  Vue de la console de gestion Wazuh, montrant l'état des agents
+                  ou les alertes de sécurité.
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-lg-4 col-md-6 d-flex align-items-stretch"
+              data-aos="fade-up"
+              data-aos-delay="800"
+            >
+              <div
+                class="service-details sidebar-wrapper w-100 p-3 surface-color rounded shadow-sm text-center"
+              >
+                <h4 class="heading-font accent-color mb-3">
+                  <i class="bi bi-bug me-2"></i> OWASP DVWA
+                </h4>
+                <img
+                  src="URL_IMAGE_DVWA_INTERFACE"
+                  alt="Interface OWASP DVWA"
+                  class="img-fluid rounded shadow-sm mt-2"
+                />
+                <p class="default-color">
+                  L'interface de l'application web délibérément vulnérable
+                  utilisée pour nos tests d'attaques web.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- fin main -->
 
