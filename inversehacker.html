@@ -221,56 +221,70 @@
             <div class="row gy-4">
               <div class="col-lg-7" data-aos="fade-up">
                 <div class="description-box">
-                  <h3>Présentation Approfondie du Projet</h3>
-                  <p class="lead">
-                    **InverseHacker** est une plateforme de recherche en
-                    cybersécurité, encapsulée sous forme d'image Docker, conçue
-                    pour opérer comme un véritable laboratoire de sécurité
-                    virtuel. Elle automatise et optimise la **collecte de
-                    renseignements en sources ouvertes (OSINT)**,
-                    l'**identification proactive de vulnérabilités complexes**,
-                    et l'**analyse exhaustive des surfaces d'attaque**. Son
-                    architecture conteneurisée assure une reproductibilité et
-                    une isolation parfaites des environnements de test.
-                  </p>
-                  <p>
-                    Ce projet ambitieux vise à équiper les chercheurs en
-                    sécurité, les pentesters éthiques et les professionnels du
-                    **Bug Bounty Hunting** d'un arsenal d'outils interconnectés.
-                    Il permet de rationaliser les processus de reconnaissance
-                    avancée, d'analyse de posture de sécurité et de détection
-                    précoce des menaces sophistiquées. En agrégeant et en
-                    orchestrant une diversité de techniques allant de
-                    l'énumération de sous-domaines à l'analyse comportementale,
-                    InverseHacker offre une vue d'ensemble critique et des
-                    insights actionnables pour renforcer drastiquement la
-                    résilience des systèmes numériques.
-                  </p>
-                </div>
+  <h3>Présentation Technique du Projet</h3>
+
+  <p class="lead">
+    <strong>InverseHacker</strong> est une plateforme avancée de recherche en cybersécurité, packagée sous forme d’image Docker, conçue pour opérer comme un <strong>laboratoire virtuel complet et portable</strong>. Elle automatise des tâches essentielles telles que la <strong>collecte de renseignements en sources ouvertes (OSINT)</strong>, la <strong>détection proactive de vulnérabilités complexes</strong> et l’<strong>analyse approfondie des surfaces d’attaque</strong>, en s’appuyant sur un ensemble d’outils intégrés et interopérables.
+  </p>
+
+  <p>
+    Grâce à son <strong>architecture conteneurisée</strong>, InverseHacker garantit :
+    <ul>
+      <li>Une <strong>reproductibilité exacte</strong> des environnements de test, quel que soit l’hôte.</li>
+      <li>Une <strong>isolation sécurisée</strong> entre les scénarios d’analyse pour éviter toute interférence.</li>
+      <li>Un <strong>déploiement rapide</strong> sans configuration complexe préalable.</li>
+    </ul>
+    Elle constitue ainsi un atout pour les chercheurs en sécurité, les pentesters éthiques et les professionnels du <strong>Bug Bounty</strong> à la recherche d’un arsenal prêt à l’emploi.
+  </p>
+
+  <p>
+    La plateforme centralise et orchestre diverses techniques avancées, notamment :
+    <strong>énumération de sous-domaines</strong>, <strong>analyse comportementale</strong>, <strong>cartographie réseau</strong> et <strong>scoring de vulnérabilités (CVSS)</strong>.  
+    Cette approche permet une <strong>reconnaissance ciblée</strong>, une <strong>analyse de posture de sécurité</strong> et une <strong>détection précoce des menaces</strong>, générant ainsi des <strong>insights opérationnels exploitables</strong> pour renforcer la résilience des infrastructures numériques.
+  </p>
+</div>
+
               </div>
 
               <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
                 <div class="project-stats">
+                  <!-- Statistique 1 : Scans de vulnérabilités -->
                   <div class="stat-item">
                     <div class="stat-number">250+</div>
                     <div class="stat-label">
-                      Scans de Vulnérabilités Réussis
+                      Scans de vulnérabilités exécutés avec succès sur des
+                      cibles simulées, incluant des systèmes Windows/Linux
+                      vulnérables.
                     </div>
                   </div>
+
+                  <!-- Statistique 2 : Précision de détection -->
                   <div class="stat-item">
                     <div class="stat-number">85%</div>
-                    <div class="stat-label">Précision Moyenne de Détection</div>
+                    <div class="stat-label">
+                      Taux moyen de précision des détections par Snort, basé sur
+                      la corrélation entre les alertes générées et les attaques
+                      réellement lancées.
+                    </div>
                   </div>
+
+                  <!-- Statistique 3 : Modules d’analyse -->
                   <div class="stat-item">
                     <div class="stat-number">12+</div>
                     <div class="stat-label">
-                      Modules d'Analyse Intégrés & Configurables
+                      Modules d’analyse intégrés (Snort, Wireshark, ELK Stack,
+                      etc.) configurés pour l’inspection réseau, la
+                      journalisation et la visualisation des menaces.
                     </div>
                   </div>
+
+                  <!-- Statistique 4 : Score CVSS -->
                   <div class="stat-item">
                     <div class="stat-number">2.9/5</div>
                     <div class="stat-label">
-                      Score CVSS Moyen des Vulnérabilités Identifiées
+                      Score CVSS moyen des vulnérabilités identifiées, indiquant
+                      une sévérité modérée selon les standards de classification
+                      des failles.
                     </div>
                   </div>
                 </div>
@@ -589,20 +603,27 @@
               data-aos-delay="600"
             >
               <div class="card-body">
+                <!-- Titre avec icône Docker -->
                 <h3 class="card-title d-flex align-items-center">
                   <i
                     class="bi bi-docker me-3"
                     style="font-size: 2rem; color: #007bff"
-                  ></i
-                  >Instructions d'Utilisation de l'Image Docker InverseHacker
+                  ></i>
+                  Guide d’Utilisation de l’Image Docker
+                  <strong>InverseHacker</strong>
                 </h3>
+
+                <!-- Introduction -->
                 <p class="card-text lead">
-                  Démarrez votre laboratoire de cybersécurité portable avec
-                  **InverseHacker** en un clin d'œil grâce à ces instructions
-                  simples et efficaces :
+                  Déployez instantanément un laboratoire de cybersécurité
+                  portable avec <strong>InverseHacker</strong>. Suivez ces
+                  instructions pour lancer vos sessions de pentesting en
+                  quelques secondes :
                 </p>
+
+                <!-- Ressources -->
                 <div class="bg-light p-3 rounded border">
-                  <p class="fw-bold">Ressources du Projet :</p>
+                  <p class="fw-bold">🔗 Ressources du Projet :</p>
                   <ul class="list-unstyled">
                     <li>
                       👉
@@ -610,8 +631,10 @@
                         href="https://github.com/jeanlucndato/inversehacker"
                         target="_blank"
                         class="text-decoration-none"
-                        >Dépôt GitHub (Code Source & Documentation)</a
                       >
+                        Dépôt GitHub — Code source, documentation et scripts
+                        d’automatisation
+                      </a>
                     </li>
                     <li>
                       👉
@@ -619,37 +642,42 @@
                         href="https://hub.docker.com/search?q=jeanluckndato%2Finversehacker"
                         target="_blank"
                         class="text-decoration-none"
-                        >Image Docker Hub (Télécharger l'Image)</a
                       >
+                        Docker Hub — Télécharger l’image préconfigurée
+                      </a>
                     </li>
                   </ul>
+
+                  <!-- Commande Bash -->
                   <p class="fw-bold">
-                    Lancement de l'image Docker (session Bash classique) :
+                    ▶️ Lancement en mode Bash (session classique) :
                   </p>
                   <pre
                     class="bg-dark text-white p-2 rounded"
                   ><code>docker run -it --rm jeanluckndato/inversehacker</code></pre>
                   <p class="card-text">
-                    Cette commande lancera une session **bash interactive** dans
-                    un conteneur temporaire (`--rm` supprime le conteneur après
-                    l'arrêt). Tous les outils de pentesting sont préinstallés et
-                    accessibles dans le répertoire :
+                    Cette commande démarre une session
+                    <strong>bash interactive</strong> dans un conteneur
+                    temporaire. L’option <code>--rm</code> garantit que le
+                    conteneur est supprimé automatiquement après usage. Tous les
+                    outils de pentesting sont préinstallés dans :
                   </p>
                   <pre
                     class="bg-dark text-white p-2 rounded"
                   ><code>/root/toolkit</code></pre>
+
+                  <!-- Commande ZSH -->
                   <p class="fw-bold">
-                    Lancement avec le shell ZSH (pour une expérience utilisateur
-                    améliorée) :
+                    💡 Lancement avec ZSH (expérience améliorée) :
                   </p>
                   <pre
                     class="bg-dark text-white p-2 rounded"
                   ><code>docker run -it jeanluckndato/inversehacker /usr/bin/zsh</code></pre>
                   <p class="card-text">
-                    Utilisez ZSH pour bénéficier de fonctionnalités avancées
-                    comme l'auto-complétion, les thèmes et une meilleure gestion
-                    de l'historique de commandes, optimisant ainsi votre
-                    workflow de pentesting.
+                    Utilisez <strong>ZSH</strong> pour profiter d’une interface
+                    plus fluide : auto-complétion intelligente, thèmes
+                    personnalisables, gestion avancée de l’historique. Idéal
+                    pour les workflows intensifs en pentesting.
                   </p>
                 </div>
               </div>
@@ -764,6 +792,7 @@
               </a>
             </div>
           </div>
+
         </div>
       </section>
     </main>
