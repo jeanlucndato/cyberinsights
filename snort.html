@@ -220,7 +220,7 @@
                 </div>
                 <div class="swiper-slide">
                   <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=Kali+Attack+Traffic+Snort+Logs"
+                    src="assets/img/Snort/Essential-Nmap-Commands-in-Kali-Linux-nmap-sV.png"
                     alt="[Trafic d'attaque généré par Kali Linux et logs Snort associés]"
                     class="img-fluid"
                     loading="lazy"
@@ -228,8 +228,24 @@
                 </div>
                 <div class="swiper-slide">
                   <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=Snort+Rule+Customization"
+                    src="assets/img/Snort/snortrulesenabledisable.png"
                     alt="[Édition de règles Snort personnalisées sur le terminal]"
+                    class="img-fluid"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/img/Snort/FAVWf.png"
+                    alt="[wireshark pcap]"
+                    class="img-fluid"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="assets/img/Snort/Elastic_Stack_Monitoring.png"
+                    alt="[dashboard elastics scharche]"
                     class="img-fluid"
                     loading="lazy"
                   />
@@ -342,361 +358,266 @@
               data-aos-delay="400"
             />
             <!-- detaille sur la mise en place -->
-
-            <div
-              class="usage-instructions-section card shadow-lg mb-5 border-0 rounded-4 animate-on-scroll"
-              data-aos="zoom-in"
-              data-aos-delay="500"
-            >
-              <div class="card-body p-4 p-md-5">
-                <h3
-                  class="card-title text-center mb-4 d-flex align-items-center justify-content-center"
+            <div class="card-body p-4 p-md-5">
+              <h3
+                class="card-title text-center mb-4 d-flex align-items-center justify-content-center"
+              >
+                <i
+                  class="bi bi-shield-shaded me-3 text-danger"
+                  style="font-size: 2.5rem"
+                ></i>
+                <span class="fw-bold text-dark"
+                  >Plan de Réalisation : Labo Cyber (Attaque & Défense
+                  SIEM)</span
                 >
+              </h3>
+              <p class="card-text lead text-center mb-4 text-muted">
+                Un plan en 4 jours pour simuler une attaque (Kali/Tor) contre
+                une cible (Win11) et la détecter avec un IDS/IPS (pfSense/Snort)
+                et un SIEM (ELK Stack).
+              </p>
+
+              <div
+                class="bg-light p-4 rounded-4 border border-secondary-subtle shadow mb-5"
+              >
+                <h5 class="text-primary fw-bold mb-4 d-flex align-items-center">
                   <i
-                    class="bi bi-tools me-3 text-danger"
-                    style="font-size: 2.5rem"
+                    class="bi bi-diagram-3-fill me-2"
+                    style="font-size: 1.5rem"
                   ></i>
-                  <span class="fw-bold text-dark"
-                    >Architecture & Déploiement du Laboratoire IDS/IPS</span
-                  >
-                </h3>
-                <p class="card-text lead text-center mb-4 text-muted">
-                  Découvrez la topologie réseau complexe et les étapes
-                  essentielles pour la mise en place de ce projet avancé de
-                  détection d'intrusions.
-                </p>
+                  Topologie et Composants Clés du Lab
+                </h5>
 
-                <!-- Bloc : Topologie Réseau Virtuelle du Lab IDS/IPS -->
-                <div
-                  class="bg-light p-4 rounded-4 border border-secondary-subtle shadow mb-5"
+                <ul
+                  class="list-group list-group-flush border-top border-bottom"
                 >
-                  <!-- Titre principal -->
-                  <h5
-                    class="text-primary fw-bold mb-4 d-flex align-items-center"
-                  >
+                  <li class="list-group-item py-3 d-flex align-items-start">
                     <i
-                      class="bi bi-diagram-3-fill me-2"
-                      style="font-size: 1.5rem"
+                      class="bi bi-firewall me-3 text-info"
+                      style="font-size: 1.3rem"
                     ></i>
-                    Topologie Réseau Virtuelle – Le Cœur du Lab
-                  </h5>
+                    <div>
+                      <strong class="text-dark"
+                        >Pare-feu / Routeur pfSense :</strong
+                      ><br />
+                      Pilier central du réseau, gérant les interfaces WAN
+                      (Internet) et LAN (réseau interne). Il sert de passerelle
+                      et de serveur DHCP pour toutes les VMs du laboratoire.
+                    </div>
+                  </li>
 
-                  <!-- Liste des composants du lab -->
-                  <ul
-                    class="list-group list-group-flush border-top border-bottom"
-                  >
-                    <!-- PFsense -->
-                    <li class="list-group-item py-3 d-flex align-items-start">
-                      <i
-                        class="bi bi-firewall me-3 text-info"
-                        style="font-size: 1.3rem"
-                      ></i>
-                      <div>
-                        <strong class="text-dark"
-                          >Pare-feu / Routeur OPNsense :</strong
-                        ><br />
-                        Élément central du réseau, gérant les interfaces WAN
-                        (Internet simulé) et LAN (réseau interne sécurisé). Il
-                        intègre le module Snort pour assurer la sécurité
-                        périmétrique et inspecter le trafic en temps réel.
-                      </div>
-                    </li>
+                  <li class="list-group-item py-3 d-flex align-items-start">
+                    <i
+                      class="bi bi-server me-3 text-success"
+                      style="font-size: 1.3rem"
+                    ></i>
+                    <div>
+                      <strong class="text-dark"
+                        >Système IDS/IPS (Snort) :</strong
+                      ><br />
+                      Intégré comme package dans pfSense, il surveille
+                      l'interface LAN. Il est d'abord configuré en mode **IDS**
+                      (détection) pour alerter, puis en mode **IPS**
+                      (prévention) pour bloquer activement les menaces.
+                    </div>
+                  </li>
 
-                    <!-- Snort IDS/IPS -->
-                    <li class="list-group-item py-3 d-flex align-items-start">
-                      <i
-                        class="bi bi-server me-3 text-success"
-                        style="font-size: 1.3rem"
-                      ></i>
-                      <div>
-                        <strong class="text-dark"
-                          >Serveur IDS/IPS (Snort) :</strong
-                        ><br />
-                        Intégré dans OPNsense, il fonctionne en mode
-                        <em>inline</em> (IPS) pour bloquer activement les
-                        menaces, ou en mode <em>promiscuous</em> (IDS) pour
-                        détecter passivement les attaques. Il analyse les
-                        paquets en profondeur pour identifier les signatures
-                        malveillantes.
-                      </div>
-                    </li>
+                  <li class="list-group-item py-3 d-flex align-items-start">
+                    <i
+                      class="bi bi-terminal me-3 text-secondary"
+                      style="font-size: 1.3rem"
+                    ></i>
+                    <div>
+                      <strong class="text-dark">Kali Linux (Attaquant) :</strong
+                      ><br />
+                      La machine offensive. Elle utilise **Tor** et
+                      **Proxychains** pour anonymiser ses attaques (scans Nmap,
+                      bruteforce Hydra), simulant un attaquant externe changeant
+                      constamment d'IP source.
+                    </div>
+                  </li>
 
-                    <!-- Kali Linux -->
-                    <li class="list-group-item py-3 d-flex align-items-start">
-                      <i
-                        class="bi bi-kali-linux me-3 text-secondary"
-                        style="font-size: 1.3rem"
-                      ></i>
-                      <div>
-                        <strong class="text-dark"
-                          >Kali Linux (Attaquant) :</strong
-                        ><br />
-                        Machine virtuelle connectée au LAN, utilisée pour
-                        simuler des attaques variées (scan de ports,
-                        exploitation de failles, injections) afin de générer du
-                        trafic malveillant et tester la réactivité du système de
-                        défense.
-                      </div>
-                    </li>
+                  <li class="list-group-item py-3 d-flex align-items-start">
+                    <i
+                      class="bi bi-pc-display-horizontal me-3 text-warning"
+                      style="font-size: 1.3rem"
+                    ></i>
+                    <div>
+                      <strong class="text-dark">Windows 11 (Cible) :</strong
+                      ><br />
+                      La machine victime sur le LAN. Elle est équipée de
+                      <strong>Winlogbeat</strong> pour exporter ses journaux
+                      d'événements (échecs de connexion, etc.) vers le SIEM en
+                      temps réel.
+                    </div>
+                  </li>
 
-                    <!-- Machines vulnérables -->
-                    <li class="list-group-item py-3 d-flex align-items-start">
-                      <i
-                        class="bi bi-pc-display-horizontal me-3 text-warning"
-                        style="font-size: 1.3rem"
-                      ></i>
-                      <div>
-                        <strong class="text-dark"
-                          >Machines Cibles Vulnérables :</strong
-                        ><br />
-                        VMs comme Metasploitable ou Windows Server vulnérable,
-                        hébergées sur le LAN. Elles servent de cibles réelles
-                        pour les attaques, permettant d’évaluer l’efficacité de
-                        Snort et d’observer les alertes générées.
-                      </div>
-                    </li>
+                  <li class="list-group-item py-3 d-flex align-items-start">
+                    <i
+                      class="bi bi-graph-up me-3 text-danger"
+                      style="font-size: 1.3rem"
+                    ></i>
+                    <div>
+                      <strong class="text-dark">ELK Stack (SIEM) :</strong
+                      ><br />
+                      Le cerveau de l'analyse. (Elasticsearch, Logstash,
+                      Kibana). Il centralise les logs de **pfSense** (pare-feu),
+                      **Snort** (alertes IDS) et **Windows 11** (logs système)
+                      pour la corrélation et la visualisation des attaques.
+                    </div>
+                  </li>
+                </ul>
+              </div>
 
-                    <!-- Outils d'analyse -->
-                    <li class="list-group-item py-3 d-flex align-items-start">
-                      <i
-                        class="bi bi-graph-up me-3 text-danger"
-                        style="font-size: 1.3rem"
-                      ></i>
-                      <div>
-                        <strong class="text-dark"
-                          >Outils d’Analyse (Wireshark, ELK Stack) :</strong
-                        ><br />
-                        Wireshark permet l’analyse forensique des paquets
-                        capturés (PCAP), tandis qu’un système de centralisation
-                        des logs (ELK Stack) agrège les alertes de Snort et
-                        OPNsense pour une visualisation corrélée et un
-                        <em>threat hunting</em> efficace.
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+              <div
+                class="bg-light p-4 rounded-4 border border-secondary-subtle shadow mt-5"
+              >
+                <h5 class="text-primary fw-bold mb-4 d-flex align-items-center">
+                  <i class="bi bi-list-ol me-2" style="font-size: 1.5rem"></i>
+                  Plan de Réalisation (4 Jours)
+                </h5>
 
-                <!-- Bloc : Étapes de déploiement du laboratoire IDS/IPS -->
-                <div
-                  class="bg-light p-4 rounded-4 border border-secondary-subtle shadow mt-5"
-                >
-                  <!-- Titre principal -->
-                  <h5
-                    class="text-primary fw-bold mb-4 d-flex align-items-center"
-                  >
-                    <i class="bi bi-list-ol me-2" style="font-size: 1.5rem"></i>
-                    Étapes Clés du Déploiement et de la Configuration
-                  </h5>
+                <ol class="list-group list-group-numbered">
+                  <li class="list-group-item py-3">
+                    <div class="fw-bold text-dark">
+                      1. Jour 1 : Architecture et Fondations
+                    </div>
+                    Construction de l'infrastructure réseau sur VMware (VMnets
+                    WAN/LAN). Installation de toutes les VM (pfSense, Kali,
+                    Win11, ELK) et validation de la connectivité de base (DHCP
+                    et accès Internet via pfSense).
+                  </li>
 
-                  <!-- Liste des étapes -->
-                  <ol class="list-group list-group-numbered">
-                    <!-- Étape 1 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        1. Installation d’OPNsense :
-                      </div>
-                      Déploiement de l’OS sur une machine virtuelle ou un
-                      serveur dédié, avec configuration des interfaces réseau et
-                      des services de base.
-                    </li>
+                  <li class="list-group-item py-3">
+                    <div class="fw-bold text-dark">
+                      2. Jour 2 : Configuration Sécurité (IDS & SIEM)
+                    </div>
+                    Installation de Snort sur pfSense (mode IDS). Configuration
+                    de l'envoi des logs de pfSense et Windows (via Winlogbeat)
+                    vers le SIEM ELK. Mise en place de Tor/Proxychains sur Kali.
+                  </li>
 
-                    <!-- Étape 2 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        2. Intégration de Snort ou Suricata :
-                      </div>
-                      Activation du module IDS/IPS dans OPNsense, sélection des
-                      règles (Community, VRT, Emerging Threats), et
-                      configuration du mode IDS ou IPS sur les interfaces à
-                      surveiller.
-                    </li>
+                  <li class="list-group-item py-3">
+                    <div class="fw-bold text-dark">
+                      3. Jour 3 : Simulation d'Attaque et Analyse
+                    </div>
+                    Lancement des attaques (Nmap, Hydra) depuis Kali via
+                    Proxychains contre Windows 11. Analyse des alertes dans
+                    Snort et corrélation des événements dans Kibana (SIEM) pour
+                    visualiser l'attaque complète.
+                  </li>
 
-                    <!-- Étape 3 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        3. Déploiement de Kali Linux & Cibles Vulnérables :
-                      </div>
-                      Installation de la machine Kali pour simuler des attaques,
-                      ainsi que des cibles vulnérables sur le réseau interne
-                      (LAN) protégé par OPNsense.
-                    </li>
+                  <li class="list-group-item py-3">
+                    <div class="fw-bold text-dark">
+                      4. Jour 4 : Prévention Active (IPS) et Reporting
+                    </div>
+                    Basculement de Snort du mode IDS (détection) au mode **IPS
+                    (prévention)**. Les règles identifiées sont configurées pour
+                    "Bloquer". Validation du blocage en relançant l'attaque et
+                    rédaction du rapport final.
+                  </li>
+                </ol>
 
-                    <!-- Étape 4 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        4. Création de Règles de Pare-feu :
-                      </div>
-                      Mise en place de règles de filtrage dans OPNsense pour
-                      contrôler le trafic entre les zones réseau et vers
-                      l’extérieur, en coordination avec Snort.
-                    </li>
-
-                    <!-- Étape 5 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        5. Rédaction de Règles Snort Personnalisées :
-                      </div>
-                      Développement de règles spécifiques pour détecter des
-                      comportements malveillants, des portes dérobées ou des
-                      failles exploitées par Kali, avec ajustement pour réduire
-                      les faux positifs.
-                    </li>
-
-                    <!-- Étape 6 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        6. Exécution de Scénarios d’Attaque :
-                      </div>
-                      Lancement d’attaques depuis Kali Linux pour tester la
-                      robustesse du pare-feu et des règles Snort, suivi d’une
-                      analyse des alertes générées dans OPNsense et via
-                      Wireshark.
-                    </li>
-
-                    <!-- Étape 7 -->
-                    <li class="list-group-item py-3">
-                      <div class="fw-bold text-dark">
-                        7. Mise en Place de la Journalisation Centralisée :
-                      </div>
-                      Configuration de Syslog ou d’un agent de collecte pour
-                      envoyer les logs d’OPNsense et Snort vers un SIEM ou une
-                      stack ELK, permettant une corrélation des événements et
-                      une visualisation des menaces.
-                    </li>
-                  </ol>
-
-                  <!-- Note finale -->
-                  <p class="card-text mt-4 text-center text-secondary">
-                    <i class="bi bi-info-circle-fill me-2"></i>
-                    Ce laboratoire est un projet personnel en constante
-                    évolution, conçu pour tester les dernières techniques
-                    d’attaque et de défense. Une maîtrise complète de son
-                    architecture offre une compréhension approfondie des enjeux
-                    de la cybersécurité moderne.
-                  </p>
-                </div>
+                <p class="card-text mt-4 text-center text-secondary">
+                  <i class="bi bi-info-circle-fill me-2"></i>
+                  Ce laboratoire est un projet personnel en constante évolution,
+                  conçu pour tester les dernières techniques d’attaque et de
+                  défense.
+                </p>
               </div>
             </div>
 
-            <!-- Bloc principal : Présentation de Kali Linux, IP dynamique et Snort -->
             <div
               class="bg-light p-4 rounded-4 border border-secondary-subtle shadow mt-5"
             >
-              <!-- Titre principal avec icône -->
               <h5 class="text-primary fw-bold mb-4 d-flex align-items-center">
                 <i
                   class="bi bi-terminal-fill me-2"
                   style="font-size: 1.5rem"
                 ></i>
-                Kali Linux – IP Dynamique & Règles Snort
+                Focus Attaquant : Kali Linux, Tor & Anonymisation
               </h5>
 
-              <!-- Image de la VM Kali Linux -->
               <div class="text-center mb-4">
                 <img
-                  src="images/kali-linux-vm.png"
+                  src="assets/img/Snort/Essential-Nmap-Commands-in-Kali-Linux-nmap-sV.png"
                   alt="Machine virtuelle Kali Linux"
                   class="img-fluid rounded-3 shadow border"
                   style="max-width: 500px"
                 />
                 <p class="mt-2 text-muted">
                   Machine Kali Linux utilisée pour simuler des attaques dans le
-                  laboratoire IDS/IPS.
+                  laboratoire.
                 </p>
               </div>
 
-              <!-- Explication sur l'IP dynamique -->
               <p>
-                Dans ce laboratoire, Kali Linux est configurée pour obtenir une
-                <strong>adresse IP dynamique toutes les 50 secondes</strong>
-                afin d’éviter sa détection par Snort. Cela permet de simuler un
-                attaquant qui change d’identité réseau fréquemment.
+                Pour simuler une menace réaliste (APT), l'attaquant ne peut pas
+                conserver une IP statique. Au lieu d'un simple changement d'IP
+                DHCP, ce projet utilise
+                <strong>le réseau Tor via Proxychains</strong>. Cela permet à
+                Kali de changer son adresse IP publique source pour chaque
+                nouvelle tentative de connexion, rendant le blocage par IP
+                simple (utilisé par l'IPS) difficile à maintenir.
               </p>
 
-              <!-- Script Bash pour renouveler l'adresse IP -->
               <p class="mb-2">
-                <strong>Script Bash pour renouveler l'IP via DHCP :</strong>
+                <strong>Configuration de Tor et Proxychains sur Kali :</strong>
               </p>
               <pre class="bg-dark text-light p-3 rounded-3">
-# Ce script libère l'IP actuelle et en demande une nouvelle toutes les 50 secondes
-while true; do
-  sudo dhclient -r eth0        # Libère l'adresse IP actuelle
-  sudo dhclient eth0           # Demande une nouvelle IP via DHCP
-  sleep 50                     # Pause de 50 secondes avant le prochain changement
-done
-  </pre
-              >
-
-              <!-- Explication sur Tornet et Tor -->
-              <p class="mt-4">
-                Pour une anonymisation plus avancée, Kali peut utiliser
-                <strong>Tornet</strong>, basé sur le réseau Tor. Cela permet de
-                masquer l'adresse IP réelle en redirigeant le trafic via des
-                nœuds Tor.
-              </p>
-
-              <!-- Étapes pour configurer Tor et Proxychains -->
-              <p class="mb-2">
-                <strong>Configuration de Tor et Proxychains :</strong>
-              </p>
-              <pre class="bg-dark text-light p-3 rounded-3">
-# 1. Installer Tor
+# 1. Mettre à jour et installer les paquets
 sudo apt update
-sudo apt install tor
+sudo apt install -y tor proxychains
 
-# 2. Installer Proxychains
-sudo apt install proxychains
-
-# 3. Modifier le fichier de configuration
-sudo nano /etc/proxychains.conf
-# Ajouter ou vérifier la ligne suivante à la fin :
+# 2. Configurer Proxychains pour utiliser Tor
+# (Le fichier /etc/proxychains4.conf doit avoir la ligne suivante à la fin)
 socks5 127.0.0.1 9050
 
-# 4. Lancer Tor
+# 3. Démarrer le service Tor
 sudo service tor start
 
-# 5. Exécuter une commande via Tor
-proxychains curl https://check.torproject.org
+# 4. Vérifier le changement d'IP (l'IP affichée doit être différente)
+proxychains curl ifconfig.me
 
-# 6. Changer d'identité Tor manuellement
-sudo service tor restart
-  </pre
+# 5. Lancer une attaque (ex: scan Nmap) via Tor
+proxychains nmap -sT -Pn -n [IP_CIBLE_WIN11]
+</pre
               >
 
-              <!-- Image des règles Snort -->
               <div class="text-center mb-4 mt-5">
                 <img
-                  src="images/snort-rules.png"
+                  src="assets/img/Snort/snortrulesenabledisable.png"
                   alt="Règles Snort personnalisées"
                   class="img-fluid rounded-3 shadow border"
                   style="max-width: 600px"
                 />
                 <p class="mt-2 text-muted">
-                  Règles Snort configurées pour détecter des signatures
-                  spécifiques d'attaques provenant de Kali Linux.
+                  Règles Snort configurées pour détecter les signatures
+                  d'attaques (scans, bruteforce) provenant de Kali.
                 </p>
               </div>
 
-              <!-- Image des alertes Snort -->
               <div class="text-center">
                 <img
-                  src="images/snort-alerts.png"
+                  src="assets/img/Snort/snortalerts.png"
                   alt="Alertes Snort"
                   class="img-fluid rounded-3 shadow border"
                   style="max-width: 600px"
                 />
                 <p class="mt-2 text-muted">
-                  Alertes générées suite aux attaques simulées, affichées dans
-                  l’interface OPNsense/Snort.
+                  Alertes générées dans pfSense/Snort suite aux attaques
+                  simulées.
                 </p>
               </div>
             </div>
+            <!-- fin block prinicpale  -->
 
             <hr
               class="my-5 border-primary"
               data-aos="fade-up"
               data-aos-delay="600"
             />
+            <!-- Composants clés du laboratoire IDS/IPS -->
 
             <div class="container section-title mt-5" data-aos="fade-up">
               <span class="description-title">Composants Clés</span>
@@ -854,6 +775,8 @@ sudo service tor restart
                 </div>
               </div>
             </div>
+
+            <!-- Compétences techniques approfondies développées -->
             <div
               class="key-features mt-5"
               data-aos="fade-up"
