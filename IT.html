@@ -1,187 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>
-      Plateforme de Formation Helpdesk IT (GLPI) - Jeanluck Cyber Insights
-    </title>
-    <meta
-      name="description"
-      content="Développement d'une plateforme de formation Helpdesk IT avancée basée sur GLPI pour simuler des environnements de support technique réels."
-    />
-    <meta
-      name="keywords"
-      content="Formation IT, Helpdesk, GLPI, Gestion des Incidents, Gestion de Parc IT, Ticketing, Compétences Techniques, Docker, Ansible, Linux, Support IT"
-    />
 
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>
+    IncidentForge - Simulation Helpdesk IT Avancée - Jeanluck Cyber Insights
+  </title>
+  <meta name="description"
+    content="IncidentForge : Une plateforme de simulation de crise IT pour récréer le chaos opérationnel et former les techniciens au raisonnement, pas juste aux outils." />
+  <meta name="keywords"
+    content="Formation IT, Helpdesk, IncidentForge, Simulation, Gestion de Crise, Raisonnement Opérationnel, Soft Skills, Docker, Ansible, Linux, Support IT" />
 
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Mukta:wght@200;300;400;500;600;700;800&family=Abel:wght@400&display=swap"
-      rel="stylesheet"
-    />
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Mukta:wght@200;300;400;500;600;700;800&family=Abel:wght@400&display=swap"
+    rel="stylesheet" />
 
-    <link href="assets/css/main.css" rel="stylesheet" />
-  </head>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
 
-  <body class="portfolio-details-page">
-    <header
-      id="header"
-      class="header d-flex align-items-center position-relative"
-    >
-      <div
-        class="container-fluid position-relative d-flex align-items-center justify-content-between"
-      >
-        <a href="index.html" class="logo d-flex align-items-center">
-          <h1 class="sitename">Jeanluck Cyber Insights</h1>
-        </a>
+  <link href="assets/css/main.css" rel="stylesheet" />
+</head>
 
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="index.html#hero" class="active">Accueil</a></li>
-            <li><a href="index.html#apropos" class="active">Apropos</a></li>
-            <li><a href="index.html#portfolio">Projets & Études de Cas</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
+<body class="portfolio-details-page">
+  <header id="header" class="header d-flex align-items-center position-relative">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Jeanluck Cyber Insights</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#hero" class="active">Accueil</a></li>
+          <li><a href="index.html#apropos" class="active">Apropos</a></li>
+          <li><a href="index.html#portfolio">Projets & Études de Cas</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>
+                IncidentForge : <br />
+                <span class="highlight-text">La Simulation de Chaos Contrôlé pour l'IT</span>
+              </h1>
+              <p class="mb-0">
+                Concevez et réalisez une plateforme de formation interactive
+                et immersive, centrée sur l'utilisation pratique de GLPI
+                (Gestionnaire Libre de Parc Informatique), pour l'excellence
+                des compétences Helpdesk IT. Ce projet vise à simuler des
+                environnements de support technique réels, permettant aux
+                futurs et actuels techniciens de maîtriser la gestion des
+                incidents, la résolution de problèmes, la gestion des actifs
+                IT et l'interaction client dans un cadre sécurisé et contrôlé.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
-    <main class="main">
-      <div class="page-title" data-aos="fade">
-        <div class="heading">
-          <div class="container">
-            <div class="row d-flex justify-content-center text-center">
-              <div class="col-lg-8">
-                <h1>
-                  Développement d'une Plateforme de Formation pour Helpdesk IT
-                  basée sur GLPI : <br />
-                  <span class="highlight-text"
-                    >Maîtrise Opérationnelle du Support et de la Gestion de
-                    Parc</span
-                  >
-                </h1>
-                <p class="mb-0">
-                  Concevez et réalisez une plateforme de formation interactive
-                  et immersive, centrée sur l'utilisation pratique de GLPI
-                  (Gestionnaire Libre de Parc Informatique), pour l'excellence
-                  des compétences Helpdesk IT. Ce projet vise à simuler des
-                  environnements de support technique réels, permettant aux
-                  futurs et actuels techniciens de maîtriser la gestion des
-                  incidents, la résolution de problèmes, la gestion des actifs
-                  IT et l'interaction client dans un cadre sécurisé et contrôlé.
-                </p>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Portefeuille</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li class="current">IncidentForge (Simulation Helpdesk)</li>
+          </ol>
+        </div>
+      </nav>
+    </div>
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-header">
+          <div class="row">
+            <div class="col-lg-7" data-aos="fade-up">
+              <h1 class="project-title">
+                IncidentForge (IT Incident Lab) : <br />Réduire le Fossé entre Théorie et Terrain
+              </h1>
+              <div class="project-meta">
+                <div class="meta-item">
+                  <i class="bi bi-calendar3"></i>
+                  <span>Projet Initié en Juin 2025</span>
+                </div>
+                <div class="meta-item">
+                  <i class="bi bi-building"></i>
+                  <span>Développement Interne / Centre de Formation IT</span>
+                </div>
+                <div class="meta-item">
+                  <i class="bi bi-link-45deg"></i>
+                  <a href="https://incident-forge.vercel.app/" target="_blank"
+                    aria-label="Accès à la plateforme IncidentForge en ligne">
+                    Accéder à la Plateforme (Live)
+                  </a>
+                </div>
+              </div>
+              <div class="project-tags" data-aos="fade-up" data-aos-delay="100">
+                <span class="tag">Formation IT</span>
+                <span class="tag">Helpdesk</span>
+                <span class="tag">Simulation</span>
+                <span class="tag">Gestion des Incidents</span>
+                <span class="tag">Gestion de Parc IT</span>
+                <span class="tag">Ticketing</span>
+                <span class="tag">Compétences Techniques</span>
+                <span class="tag">Expérience Client</span>
+                <span class="tag">Automatisation</span>
+                <span class="tag">Virtualisation</span>
+                <span class="tag">DevOps</span>
+              </div>
+            </div>
+            <div class="col-lg-5 d-flex align-items-center justify-content-end" data-aos="fade-up" data-aos-delay="200">
+              <div class="technologies">
+                <div class="tech-title">
+                  Technologies & Compétences Clés :
+                </div>
+                <div class="tech-badges">
+                  <span>Docker / Docker Compose</span>
+                  <span>Linux (Ubuntu/CentOS)</span>
+                  <span>Ansible / Shell Scripting</span>
+                  <span>Moteur de Simulation & Ticketing</span>
+                  <span>Apache / Nginx</span>
+                  <span>MySQL / MariaDB</span>
+                  <span>OpenLDAP / FreeIPA (Annuaire)</span>
+                  <span>VirtualBox / KVM (Virtualisation)</span>
+                  <span>Python / Flask (Intégrations/API)</span>
+                  <span>HTML / CSS / JavaScript (Frontend)</span>
+                  <span>ITIL / ITSM</span>
+                  <span>Gestion de Projet</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <nav class="breadcrumbs">
-          <div class="container">
-            <ol>
-              <li><a href="index.html">Portefeuille</a></li>
-              <li><a href="#projects">Projets</a></li>
-              <li class="current">Plateforme Helpdesk Training (GLPI)</li>
-            </ol>
-          </div>
-        </nav>
-      </div>
-      <section id="portfolio-details" class="portfolio-details section">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-header">
-            <div class="row">
-              <div class="col-lg-7" data-aos="fade-up">
-                <h1 class="project-title">
-                  Plateforme Interactive de Simulation pour Techniciens Helpdesk
-                  avec GLPI : <br />Améliorer l'Efficience et l'Expérience
-                  Utilisateur
-                </h1>
-                <div class="project-meta">
-                  <div class="meta-item">
-                    <i class="bi bi-calendar3"></i>
-                    <span>Projet Initié en Juin 2025</span>
-                  </div>
-                  <div class="meta-item">
-                    <i class="bi bi-building"></i>
-                    <span>Développement Interne / Centre de Formation IT</span>
-                  </div>
-                  <div class="meta-item">
-                    <i class="bi bi-link-45deg"></i>
-                    <a
-                      href="#project-repository"
-                      aria-label="Accès au dépôt de code et à la documentation technique du projet"
-                    >
-                      Dépôt GitHub & Documentation (À venir)
-                    </a>
-                  </div>
-                </div>
-                <div
-                  class="project-tags"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
-                  <span class="tag">Formation IT</span>
-                  <span class="tag">Helpdesk</span>
-                  <span class="tag">GLPI</span>
-                  <span class="tag">Gestion des Incidents</span>
-                  <span class="tag">Gestion de Parc IT</span>
-                  <span class="tag">Ticketing</span>
-                  <span class="tag">Compétences Techniques</span>
-                  <span class="tag">Expérience Client</span>
-                  <span class="tag">Automatisation</span>
-                  <span class="tag">Virtualisation</span>
-                  <span class="tag">DevOps</span>
-                </div>
-              </div>
-              <div
-                class="col-lg-5 d-flex align-items-center justify-content-end"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <div class="technologies">
-                  <div class="tech-title">
-                    Technologies & Compétences Clés :
-                  </div>
-                  <div class="tech-badges">
-                    <span>Docker / Docker Compose</span>
-                    <span>Linux (Ubuntu/CentOS)</span>
-                    <span>Ansible / Shell Scripting</span>
-                    <span>GLPI (Système de Ticketing & ITAM)</span>
-                    <span>Apache / Nginx</span>
-                    <span>MySQL / MariaDB</span>
-                    <span>OpenLDAP / FreeIPA (Annuaire)</span>
-                    <span>VirtualBox / KVM (Virtualisation)</span>
-                    <span>Python / Flask (Intégrations/API)</span>
-                    <span>HTML / CSS / JavaScript (Frontend)</span>
-                    <span>ITIL / ITSM</span>
-                    <span>Gestion de Projet</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="media-showcase" data-aos="zoom-in" data-aos-delay="100">
-            <div class="portfolio-details-slider swiper init-swiper">
-              <script type="application/json" class="swiper-config">
+        <div class="media-showcase" data-aos="zoom-in" data-aos-delay="100">
+          <div class="portfolio-details-slider swiper init-swiper">
+            <script type="application/json" class="swiper-config">
                 {
                   "loop": true,
                   "speed": 800,
@@ -200,892 +166,736 @@
                   }
                 }
               </script>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=Accueil+Plateforme+Training"
-                    alt="Écran d'accueil de la plateforme de formation Helpdesk, avec les modules de cours disponibles."
-                    class="img-fluid"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="swiper-slide">
-                  <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=Interface+GLPI+Tickets"
-                    alt="Capture d'écran de l'interface de gestion de tickets GLPI, affichant des tickets ouverts et leur statut."
-                    class-id="img-fluid"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="swiper-slide">
-                  <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=GLPI+Gestion+Parc+IT"
-                    alt="Interface GLPI montrant la gestion de parc informatique avec des entrées pour serveurs, postes de travail et périphériques."
-                    class-id="img-fluid"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="swiper-slide">
-                  <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=Laboratoire+Virtuel+Incident"
-                    alt="Capture d'écran d'un environnement de laboratoire virtuel avec un problème réseau simulé et des outils de diagnostic."
-                    class-id="img-fluid"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="swiper-slide">
-                  <img
-                    src="https://placehold.co/1200x675/131d33/e4edf5?text=Tableau+de+Bord+Formateur"
-                    alt="Tableau de bord pour formateurs, affichant la progression des apprenants et les performances aux exercices."
-                    class-id="img-fluid"
-                    loading="lazy"
-                  />
-                </div>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://placehold.co/1200x675/131d33/e4edf5?text=Accueil+Plateforme+Training"
+                  alt="Écran d'accueil de la plateforme de formation Helpdesk, avec les modules de cours disponibles."
+                  class="img-fluid" loading="lazy" />
               </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-
-          <div class="project-content">
-            <div class="row gy-4">
-              <div class="col-lg-7" data-aos="fade-up">
-                <div class="description-box">
-                  <h3>
-                    Présentation Détaillée du Projet : L'Excellence du Support
-                    IT par la Pratique
-                  </h3>
-                  <p class="lead">
-                    Ce projet ambitieux vise à développer une **plateforme de
-                    formation Helpdesk IT de nouvelle génération**, entièrement
-                    articulée autour de l'outil open-source **GLPI (Gestionnaire
-                    Libre de Parc Informatique)**. Forte de mon expertise en
-                    architecture réseau et en systèmes, je conçois une
-                    infrastructure robuste et évolutive qui reproduit fidèlement
-                    les environnements de support technique professionnels,
-                    permettant une immersion totale des apprenants.
-                  </p>
-                  <p>
-                    Au-delà de la simple théorie, la plateforme offrira des
-                    **scénarios pratiques concrets**. Les futurs et actuels
-                    techniciens Helpdesk seront confrontés à des incidents
-                    réels, de la simple demande utilisateur à la panne critique
-                    affectant des services essentiels. Ils apprendront à
-                    interagir directement avec une instance personnalisée de
-                    GLPI pour :
-                  </p>
-                  <ul>
-                    <li>
-                      <i class="bi bi-ticket-detailed me-2 text-primary"></i
-                      >**Gérer le cycle de vie complet des tickets** (création,
-                      qualification, escalade, résolution, clôture), en
-                      respectant les bonnes pratiques ITIL.
-                    </li>
-                    <li>
-                      <i class="bi bi-gear-fill me-2 text-info"></i
-                      >**Diagnostiquer et résoudre des problèmes techniques**
-                      variés (logiciels, matériels, réseau) en utilisant des
-                      environnements virtuels isolés.
-                    </li>
-                    <li>
-                      <i class="bi bi-hdd-fill me-2 text-success"></i
-                      >**Maîtriser la gestion des actifs IT (ITAM)** via GLPI, y
-                      compris l'inventaire, le suivi du cycle de vie des
-                      équipements, et la gestion des configurations.
-                    </li>
-                    <li>
-                      <i class="bi bi-people-fill me-2 text-warning"></i
-                      >**Perfectionner la communication client**, en
-                      enregistrant les interactions et en fournissant des mises
-                      à jour claires dans le système de ticketing.
-                    </li>
-                    <li>
-                      <i class="bi bi-book-fill me-2 text-danger"></i>**Utiliser
-                      la base de connaissances GLPI** pour la résolution rapide
-                      des incidents et la documentation des solutions.
-                    </li>
-                  </ul>
-                  <p>
-                    Chaque laboratoire virtuel sera provisionné dynamiquement
-                    avec **Docker et Ansible**, garantissant des environnements
-                    propres et réinitialisables. Le suivi de la progression et
-                    l'évaluation des compétences seront intégrés, avec des
-                    rapports détaillés pour les formateurs, mesurant
-                    l'efficacité des interventions dans GLPI et la résolution
-                    des scénarios.
-                  </p>
-                </div>
+              <div class="swiper-slide">
+                <img src="https://placehold.co/1200x675/131d33/e4edf5?text=Interface+Gestion+Incidents"
+                  alt="Capture d'écran de l'interface de gestion d'incidents, affichant des tickets critiques et leur statut en temps réel."
+                  class-id="img-fluid" loading="lazy" />
               </div>
-
-              <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-stats">
-                  <div class="stat-item">
-                    <div class="stat-number">**20%**</div>
-                    <div class="stat-label">
-                      Diminution Estimée des Erreurs de Traitement L1/L2
-                    </div>
-                  </div>
-                  <div class="stat-item">
-                    <div class="stat-number">**-15%**</div>
-                    <div class="stat-label">
-                      Réduction du Temps Moyen de Résolution (MTTR)
-                    </div>
-                  </div>
-                  <div class="stat-item">
-                    <div class="stat-number">**+10%**</div>
-                    <div class="stat-label">
-                      Augmentation Ciblée de la Satisfaction Utilisateur
-                    </div>
-                  </div>
-                  <div class="stat-item">
-                    <div class="stat-number">**-25%**</div>
-                    <div class="stat-label">
-                      Optimisation des Coûts de Formation par Apprenant
-                    </div>
-                  </div>
-                  <div class="stat-item">
-                    <div class="stat-number">**10+**</div>
-                    <div class="stat-label">
-                      Scénarios Complexes de Problèmes IT
-                    </div>
-                  </div>
-                </div>
+              <div class="swiper-slide">
+                <img src="https://placehold.co/1200x675/131d33/e4edf5?text=Supervision+Infrastructure"
+                  alt="Interface de supervision montrant l'état de santé du parc informatique et des services critiques."
+                  class-id="img-fluid" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://placehold.co/1200x675/131d33/e4edf5?text=Laboratoire+Virtuel+Incident"
+                  alt="Capture d'écran d'un environnement de laboratoire virtuel avec un problème réseau simulé et des outils de diagnostic."
+                  class-id="img-fluid" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://placehold.co/1200x675/131d33/e4edf5?text=Tableau+de+Bord+Formateur"
+                  alt="Tableau de bord pour formateurs, affichant la progression des apprenants et les performances aux exercices."
+                  class-id="img-fluid" loading="lazy" />
               </div>
             </div>
-
-            <div class="row gy-4 mt-4">
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="info-card">
-                  <div class="card-icon">
-                    <i class="bi bi-question-circle"></i>
-                  </div>
-                  <h4>Le Défi : L'Écart entre Théorie et Pratique sur GLPI</h4>
-                  <p>
-                    Le principal défi dans la formation Helpdesk est de combler
-                    l'écart entre les connaissances théoriques et l'application
-                    pratique des compétences, particulièrement avec des outils
-                    comme GLPI. Les formations traditionnelles peinent à offrir
-                    une expérience authentique de gestion de tickets et de parc
-                    IT dans des scénarios réels. Cela se traduit souvent par un
-                    manque de confiance et d'efficacité des techniciens
-                    nouvellement formés lors de leur prise de poste. Il est
-                    essentiel de simuler des environnements dynamiques où les
-                    incidents évoluent et les décisions ont des conséquences.
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="info-card">
-                  <div class="card-icon">
-                    <i class="bi bi-tools"></i>
-                  </div>
-                  <h4>
-                    La Solution : Une Cyber Range GLPI Conteneurisée et
-                    Automatisée
-                  </h4>
-                  <p>
-                    Ma solution se positionne comme une véritable **"Cyber Range
-                    Helpdesk"**. Elle s'appuie sur une architecture avancée et
-                    intégrée :
-                    <br />
-                    1. **Conteneurisation (Docker/Docker Compose)** : Pour
-                    isoler les instances GLPI et les services associés (web,
-                    BDD, LDAP simulé) de chaque apprenant, garantissant des
-                    environnements propres et réinitialisables à la demande.
-                    <br />
-                    2. **Virtualisation (VirtualBox/KVM)** : Pour les machines
-                    clientes et serveurs impactées par les incidents, permettant
-                    la manipulation de systèmes d'exploitation réels (Windows,
-                    Linux) et l'exécution d'outils de diagnostic.
-                    <br />
-                    3. **Automatisation (Ansible/Shell Scripting)** : Des
-                    playbooks Ansible orchestrent le déploiement rapide des
-                    scénarios, l'injection de problèmes et la remise à zéro des
-                    environnements après chaque exercice.
-                    <br />
-                    Cette synergie technologique offre une plateforme immersive
-                    où les erreurs sont des opportunités d'apprentissage, sans
-                    impact sur la production.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="container section-title mt-5" data-aos="fade-up">
-              <span class="description-title">Vision Stratégique</span>
-              <h3>
-                Pourquoi cette Plateforme (avec GLPI) est Essentielle pour un
-                Helpdesk Performant
-              </h3>
-            </div>
-
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="col-lg-12">
-                <div class="description-box">
-                  <p>
-                    L'intégration de GLPI dans la plateforme de formation n'est
-                    pas un simple ajout technologique, mais une démarche
-                    stratégique. Elle assure que les techniciens sont non
-                    seulement formés aux fondamentaux du support IT, mais aussi
-                    à l'utilisation d'un outil très répandu dans le monde
-                    professionnel, ce qui facilite leur intégration et leur
-                    productivité.
-                  </p>
-                  <div class="row mt-4">
-                    <div class="col-md-6">
-                      <div class="feature-item">
-                        <i class="bi bi-person-check"></i>
-                        <h5>Maîtrise Opérationnelle d'un Outil Clé</h5>
-                        <p>
-                          Les apprenants deviennent experts dans l'utilisation
-                          de GLPI pour la gestion des tickets, la consultation
-                          du parc, la gestion des problèmes et des changements,
-                          ce qui est une compétence directement transférable en
-                          entreprise.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="feature-item">
-                        <i class="bi bi-book"></i>
-                        <h5>Développement d'une Culture ITIL/ITSM</h5>
-                        <p>
-                          La structure de GLPI encourage l'application des
-                          bonnes pratiques ITIL/ITSM, formant ainsi des
-                          techniciens non seulement compétents techniquement,
-                          mais aussi méthodologiquement.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="feature-item">
-                        <i class="bi bi-star-fill"></i>
-                        <h5>Amélioration de l'Expérience Utilisateur Finale</h5>
-                        <p>
-                          Des techniciens formés sur un outil intégré et
-                          polyvalent sont plus efficaces, plus rapides et
-                          communiquent mieux, ce qui se traduit directement par
-                          une meilleure satisfaction des utilisateurs et une
-                          gestion des actifs plus rigoureuse.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="feature-item">
-                        <i class="bi bi-currency-dollar"></i>
-                        <h5>
-                          Optimisation des Coûts de Formation et d'Opérations
-                        </h5>
-                        <p>
-                          Réduit le besoin de formations externes coûteuses sur
-                          GLPI et minimise l'impact des erreurs sur les systèmes
-                          de production grâce à une meilleure préparation,
-                          générant des économies significatives.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container section-title mt-5" data-aos="fade-up">
-              <span class="description-title">Feuille de Route</span>
-              <h3>
-                Étapes Clés de la Réalisation du Projet avec GLPI (Expert en
-                Architecture Réseau)
-              </h3>
-              <p class="lead text-center text-muted">
-                Un projet structuré en phases clés, de la conception à
-                l'évolution continue, pour garantir une plateforme de formation
-                robuste et pertinente.
-              </p>
-            </div>
-
-            <div class="row gy-4 portfolio-container">
-              <div class="col-lg-4 col-md-6 portfolio-item animate-item">
-                <div class="portfolio-wrap">
-                  <a
-                    href="#"
-                    class="img-link"
-                    aria-label="Phase de conception de l'architecture de la plateforme"
-                  >
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=Architecture+GLPI+Training"
-                      alt="Diagramme de conception architecturale de la plateforme de formation intégrant GLPI"
-                      class="img-fluid"
-                      loading="lazy"
-                    />
-                  </a>
-                  <div class="portfolio-info">
-                    <div class="content">
-                      <span class="category">Phase 1</span>
-                      <h4>
-                        <i class="bi bi-clipboard-data"></i> Conception
-                        Architecturale et Spécifications
-                      </h4>
-                      <p class="card-text">
-                        **Description :** Définition de l'architecture globale
-                        (infrastructure, applications, réseau, sécurité) de la
-                        plateforme, avec une attention particulière à
-                        l'intégration de GLPI. Choix des technologies clés (GLPI
-                        comme SGT/ITAM, solution de virtualisation, outils
-                        d'automatisation). Élaboration des diagrammes de réseau,
-                        des plans d'adressage IP et des politiques de
-                        segmentation pour assurer l'isolation des environnements
-                        d'apprentissage et la connectivité sécurisée à GLPI.
-                      </p>
-                      <p class="card-text">
-                        **Livrables :** Document d'architecture technique
-                        détaillé, schémas réseau logiques et physiques, plan de
-                        déploiement de GLPI, matrice des cas d'usage de
-                        formation incluant l'interaction avec GLPI.
-                      </p>
-                    </div>
-                    <div class="portfolio-links">
-                      <a
-                        href="#"
-                        title="Voir les spécifications"
-                        aria-label="Lien vers les spécifications techniques de la phase de conception"
-                        ><i class="bi bi-eye"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 portfolio-item animate-item">
-                <div class="portfolio-wrap">
-                  <a
-                    href="#"
-                    class="img-link"
-                    aria-label="Mise en place de l'infrastructure physique et virtuelle"
-                  >
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=Infrastructure+Setup+VMs"
-                      alt="Configuration de serveurs et d'hyperviseurs pour la plateforme de virtualisation des labs"
-                      class="img-fluid"
-                      loading="lazy"
-                    />
-                  </a>
-                  <div class="portfolio-info">
-                    <div class="content">
-                      <span class="category">Phase 2</span>
-                      <h4>
-                        <i class="bi bi-server"></i> Déploiement du Socle
-                        Infrastructurel
-                      </h4>
-                      <p class="card-text">
-                        **Description :** Installation et configuration des
-                        serveurs physiques ou VMs hôtes, des hyperviseurs
-                        (VirtualBox/KVM), et du réseau sous-jacent. Mise en
-                        place de Docker et Docker Compose pour la
-                        conteneurisation des services. Configuration des
-                        services d'infrastructure partagés comme l'annuaire
-                        OpenLDAP/FreeIPA pour la gestion des utilisateurs
-                        simulés et réels. Validation de la connectivité réseau
-                        inter-composants et de la sécurité des accès.
-                        Préparation de l'environnement pour l'installation de
-                        GLPI.
-                      </p>
-                      <p class="card-text">
-                        **Livrables :** Infrastructure physique/virtuelle
-                        opérationnelle, services de base configurés, rapports de
-                        tests de connectivité et de sécurité.
-                      </p>
-                    </div>
-                    <div class="portfolio-links">
-                      <a
-                        href="#"
-                        title="Voir les détails de l'infrastructure"
-                        aria-label="Lien vers les détails de la mise en place de l'infrastructure"
-                        ><i class="bi bi-info-circle"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 portfolio-item animate-item">
-                <div class="portfolio-wrap">
-                  <a
-                    href="#"
-                    class="img-link"
-                    aria-label="Intégration du système de ticketing GLPI et création des laboratoires virtuels"
-                  >
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Lab+Scenarios"
-                      alt="Interface GLPI avec des tickets liés à des problèmes dans les laboratoires virtuels"
-                      class-id="img-fluid"
-                      loading="lazy"
-                    />
-                  </a>
-                  <div class="portfolio-info">
-                    <div class="content">
-                      <span class="category">Phase 3</span>
-                      <h4>
-                        <i class="bi bi-ticket-perforated"></i> Déploiement de
-                        GLPI et Conception des Labs Virtuels
-                      </h4>
-                      <p class="card-text">
-                        **Description :** Installation, configuration et
-                        personnalisation de l'instance GLPI. Création des
-                        entités, profils, règles de gestion des tickets et des
-                        notifications. Intégration de GLPI avec l'annuaire pour
-                        la gestion des utilisateurs. Création des premières
-                        images de machines virtuelles (Windows Client/Server,
-                        Linux Client/Server) avec des agents GLPI (si pertinent
-                        pour l'inventaire) et configuration des scénarios
-                        d'incidents (ex: problème DNS, DHCP, accès applications,
-                        panne matérielle) qui seront gérés via GLPI.
-                        Développement des scripts d'automatisation (Ansible)
-                        pour le déploiement et la réinitialisation des
-                        environnements de lab à la demande, en synchronisation
-                        avec les données GLPI.
-                      </p>
-                      <p class="card-text">
-                        **Livrables :** Instance GLPI fonctionnelle et
-                        personnalisée, scénarios de formation pré-configurés
-                        dans GLPI, images de VM de base avec problèmes ciblés,
-                        scripts d'automatisation opérationnels.
-                      </p>
-                    </div>
-                    <div class="portfolio-links">
-                      <a
-                        href="#"
-                        title="Voir la progression de l'intégration"
-                        aria-label="Lien vers la progression de l'intégration de GLPI et des labs"
-                        ><i class="bi bi-graph-up"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 portfolio-item animate-item">
-                <div class="portfolio-wrap">
-                  <a
-                    href="#"
-                    class="img-link"
-                    aria-label="Développement de l'interface utilisateur et des outils de suivi"
-                  >
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=User+Interface+GLPI+Tracking"
-                      alt="Maquette de l'interface utilisateur de la plateforme de formation, intégrant des liens vers GLPI et des tableaux de bord de suivi."
-                      class-id="img-fluid"
-                      loading="lazy"
-                    />
-                  </a>
-                  <div class="portfolio-info">
-                    <div class="content">
-                      <span class="category">Phase 4</span>
-                      <h4>
-                        <i class="bi bi-laptop"></i> Développement de l'IHM et
-                        Modules de Suivi
-                      </h4>
-                      <p class="card-text">
-                        **Description :** Développement d'une interface web
-                        conviviale (HTML/CSS/JS avec un framework comme Flask ou
-                        Django pour le backend) permettant aux apprenants de
-                        lancer des scénarios, d'accéder directement à leur
-                        instance GLPI de formation, de visualiser leur
-                        progression et d'accéder aux ressources (bases de
-                        connaissances, tutoriels). Implémentation des outils de
-                        suivi pour les formateurs, leur permettant de superviser
-                        l'activité des apprenants dans GLPI et d'évaluer leur
-                        performance sur les tickets résolus et la gestion des
-                        actifs.
-                      </p>
-                      <p class="card-text">
-                        **Livrables :** Interface utilisateur fonctionnelle,
-                        modules de suivi et de reporting de base, documentation
-                        d'utilisation pour apprenants et formateurs.
-                      </p>
-                    </div>
-                    <div class="portfolio-links">
-                      <a
-                        href="#"
-                        title="Découvrir l'interface"
-                        aria-label="Lien vers une démonstration de l'interface utilisateur"
-                        ><i class="bi bi-display"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 portfolio-item animate-item">
-                <div class="portfolio-wrap">
-                  <a
-                    href="#"
-                    class="img-link"
-                    aria-label="Phase de tests, d'optimisation et de déploiement pilote"
-                  >
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=Testing+GLPI+Scenarios"
-                      alt="Équipe effectuant des tests des scénarios de formation dans GLPI et les environnements virtuels."
-                      class-id="img-fluid"
-                      loading="lazy"
-                    />
-                  </a>
-                  <div class="portfolio-info">
-                    <div class="content">
-                      <span class="category">Phase 5</span>
-                      <h4>
-                        <i class="bi bi-check-all"></i> Tests, Optimisation et
-                        Déploiement Pilote
-                      </h4>
-                      <p class="card-text">
-                        **Description :** Phase intensive de tests fonctionnels
-                        et de performance de l'ensemble de la plateforme,
-                        incluant la robustesse de GLPI sous charge et
-                        l'efficacité des scénarios. Optimisation de
-                        l'automatisation, des performances réseau et de la
-                        sécurité. Déploiement pilote avec un groupe restreint
-                        d'utilisateurs pour recueillir des retours critiques sur
-                        l'expérience d'apprentissage et l'utilisation de GLPI.
-                        Réajustements basés sur les observations et les
-                        remontées des utilisateurs pilotes.
-                      </p>
-                      <p class="card-text">
-                        **Livrables :** Rapports de tests (fonctionnels,
-                        performance, sécurité), versions optimisées des
-                        composants, retour d'expérience du pilote, plan
-                        d'amélioration continue.
-                      </p>
-                    </div>
-                    <div class="portfolio-links">
-                      <a
-                        href="#"
-                        title="Voir les rapports de tests"
-                        aria-label="Lien vers les rapports de tests et les retours du pilote"
-                        ><i class="bi bi-file-earmark-check"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-4 col-md-6 portfolio-item animate-item">
-                <div class="portfolio-wrap">
-                  <a
-                    href="#"
-                    class="img-link"
-                    aria-label="Phase de maintenance, d'ajout de contenu et d'évolution de la plateforme"
-                  >
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Content+Updates"
-                      alt="Équipe travaillant sur des mises à jour de GLPI et l'ajout de nouveaux scénarios de formation."
-                      class-id="img-fluid"
-                      loading="lazy"
-                    />
-                  </a>
-                  <div class="portfolio-info">
-                    <div class="content">
-                      <span class="category">Phase 6</span>
-                      <h4>
-                        <i class="bi bi-arrow-repeat"></i> Maintenance et
-                        Évolution Continue de la Plateforme GLPI
-                      </h4>
-                      <p class="card-text">
-                        **Description :** Suivi des performances et de la
-                        stabilité de la plateforme en production. Ajout régulier
-                        de nouveaux scénarios de formation basés sur l'évolution
-                        des technologies et les incidents réels, avec des mises
-                        à jour des configurations GLPI associées. Mise à jour
-                        des versions de GLPI et des systèmes/applications
-                        intégrés pour maintenir la pertinence des environnements
-                        de lab. Collecte continue de feedback pour des
-                        améliorations itératives.
-                      </p>
-                      <p class="card-text">
-                        **Livrables :** Cycles de mise à jour réguliers,
-                        nouveaux scénarios de formation publiés, rapports de
-                        satisfaction des utilisateurs, roadmap d'évolution des
-                        fonctionnalités GLPI et des labs.
-                      </p>
-                    </div>
-                    <div class="portfolio-links">
-                      <a
-                        href="#"
-                        title="Voir la roadmap d'évolution"
-                        aria-label="Lien vers la roadmap d'évolution continue de la plateforme"
-                        ><i class="bi bi-calendar-event"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="project-gallery"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <h3>Aperçus du Projet : La Plateforme GLPI en Action</h3>
-              <div class="row g-3">
-                <div class="col-6 col-md-3">
-                  <div class="gallery-item">
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Ticket+Creation"
-                      alt="Exemple de création de ticket dans GLPI par un utilisateur ou un technicien, avec les champs de description."
-                      class-id="img-fluid glightbox"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-                <div class="col-6 col-md-3">
-                  <div class="gallery-item">
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Asset+View"
-                      alt="Vue d'un actif informatique (ordinateur, imprimante) dans GLPI, montrant ses spécifications et son historique."
-                      class-id="img-fluid glightbox"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-                <div class="col-6 col-md-3">
-                  <div class="gallery-item">
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Knowledge+Base"
-                      alt="Section de la base de connaissances GLPI avec des articles et des solutions pour les problèmes courants."
-                      class-id="img-fluid glightbox"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-                <div class="col-6 col-md-3">
-                  <div class="gallery-item">
-                    <img
-                      src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Reports+Dashboards"
-                      alt="Tableau de bord de rapports GLPI, affichant des statistiques sur les tickets et le parc informatique."
-                      class-id="img-fluid glightbox"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="key-features" data-aos="fade-up" data-aos-delay="200">
-              <h3>Bénéfices Stratégiques et Perspective d'Évolution</h3>
-              <div class="row g-4">
-                <div class="col-md-4">
-                  <div class="feature-item">
-                    <i class="bi bi-person-workspace"></i>
-                    <h5>Maîtrise Pratique d'un Outil Standard</h5>
-                    <p>
-                      Les apprenants acquièrent une expérience directe avec
-                      GLPI, un outil largement utilisé, augmentant leur
-                      employabilité et leur confiance.
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="feature-item">
-                    <i class="bi bi-arrows-fullscreen"></i>
-                    <h5>Scénarios Complets "De A à Z"</h5>
-                    <p>
-                      Permet de suivre un incident depuis sa création dans GLPI,
-                      sa résolution dans un environnement virtuel, jusqu'à sa
-                      clôture et la mise à jour de l'actif IT.
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="feature-item">
-                    <i class="bi bi-graph-up"></i>
-                    <h5>Évaluation Basée sur l'Usage Réel de GLPI</h5>
-                    <p>
-                      Les performances des apprenants sont évaluées sur leur
-                      capacité à utiliser GLPI efficacement, à documenter leurs
-                      actions et à gérer le cycle de vie des incidents.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="project-navigation"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <a href="#" class="prev-project">
-                <i class="bi bi-arrow-left-short"></i>
-                <span>Projet Précédent : Système de Gestion des Assets IT</span>
-              </a>
-              <a href="#projects" class="all-projects">
-                <i class="bi bi-grid-3x3-gap"></i>
-                <span>Tous les Projets</span>
-              </a>
-              <a href="#" class="next-project">
-                <span
-                  >Projet Suivant : Implémentation d'un SD-WAN pour PME</span
-                >
-                <i class="bi bi-arrow-right-short"></i>
-              </a>
-            </div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
-      </section>
-    </main>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        new Swiper(".carousel-container", {
-          slidesPerView: 1,
-          spaceBetween: 30,
-          loop: true,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          autoplay: {
-            delay: 3000, // Défilement automatique toutes les 3 secondes
-            disableOnInteraction: false, // Continue le défilement même après interaction de l'utilisateur
-          },
-          // Breakpoints responsives
-          breakpoints: {
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            992: {
-              slidesPerView: 3,
-              spaceBetween: 50,
-            },
-            1200: {
-              slidesPerView: 4,
-              spaceBetween: 60,
-            },
-          },
-        });
-      });
-    </script>
+        <div class="project-content">
+          <div class="row gy-4">
+            <div class="col-lg-7" data-aos="fade-up">
+              <div class="description-box">
+                <h3>
+                  Rapport de Projet : La Philosophie IncidentForge
+                </h3>
+                <p class="lead">
+                  Ce projet répond à un manque très concret dans l’écosystème IT : on forme beaucoup sur les outils,
+                  très peu sur le raisonnement opérationnel. Dans la réalité du helpdesk, les incidents ne se présentent
+                  jamais comme dans les manuels. Les informations sont incomplètes, l’utilisateur est stressé, le temps
+                  presse, et plusieurs causes plausibles se superposent. <strong>IT Incident Lab</strong> recrée
+                  précisément ce chaos contrôlé. Il permet aux techniciens de s’entraîner à penser comme sur le terrain,
+                  pas comme dans un QCM. L’utilité immédiate est claire : réduire le fossé entre la théorie et la
+                  pratique.
+                </p>
+                <p>
+                  L’importance du projet devient encore plus évidente quand on regarde l’impact humain. Un helpdesk
+                  efficace ne repose pas uniquement sur des compétences techniques, mais sur la capacité à poser les
+                  bonnes questions, dans le bon ordre, avec le bon ton. En simulant des utilisateurs imparfaits —
+                  parfois vagues, parfois émotionnels — la plateforme entraîne des compétences rarement évaluées mais
+                  essentielles : communication, priorisation, gestion de la pression. Résultat : des techniciens plus
+                  confiants, plus méthodiques, et moins dépendants de l’escalade systématique.
+                </p>
+                <p>
+                  Sur le plan organisationnel, ce type de plateforme a un impact mesurable. Mieux formés, les
+                  techniciens résolvent plus vite, font moins d’actions inutiles, et respectent davantage les processus.
+                  Cela se traduit directement par une baisse du MTTR, une amélioration des SLA et une meilleure
+                  satisfaction utilisateur. Pour les entreprises, IT Incident Lab devient un outil d’évaluation et de
+                  montée en compétence continue, pas seulement un support de formation ponctuel.
+                </p>
+                <p>
+                  Dans la communauté IT au sens large, ce projet introduit une approche plus mature de l’apprentissage :
+                  la simulation comme standard, à l’image de ce qui existe déjà dans l’aviation ou la médecine. Il
+                  encourage le partage de scénarios réels, l’amélioration collective des pratiques helpdesk, et la
+                  transmission d’une culture du diagnostic rigoureux. À terme, ce type de plateforme peut élever le
+                  niveau global du support IT, professionnaliser des rôles parfois sous-estimés, et rappeler une vérité
+                  simple : derrière chaque incident, il y a autant de logique que d’humain.
+                </p>
+              </div>
+            </div>
 
-    <footer id="footer" class="footer">
-      <div class="container footer-top">
-        <div class="row gy-4">
-          <div class="col-lg-6 col-md-12 footer-about">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <span class="sitename">Jeanluck Cyber Insights</span>
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+              <div class="project-stats">
+                <div class="stat-item">
+                  <div class="stat-number">**20%**</div>
+                  <div class="stat-label">
+                    Diminution Estimée des Erreurs de Traitement L1/L2
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">**-15%**</div>
+                  <div class="stat-label">
+                    Réduction du Temps Moyen de Résolution (MTTR)
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">**+10%**</div>
+                  <div class="stat-label">
+                    Augmentation Ciblée de la Satisfaction Utilisateur
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">**-25%**</div>
+                  <div class="stat-label">
+                    Optimisation des Coûts de Formation par Apprenant
+                  </div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">**10+**</div>
+                  <div class="stat-label">
+                    Scénarios Complexes de Problèmes IT
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row gy-4 mt-4">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="info-card">
+                <div class="card-icon">
+                  <i class="bi bi-question-circle"></i>
+                </div>
+                <h4>Le Défi : L'Écart entre Théorie et Réalité Opérationnelle</h4>
+                <p>
+                  Le principal défi dans la formation Helpdesk est de combler
+                  l'écart entre les connaissances théoriques et l'imprévisibilité
+                  du terrain. Les formations traditionnelles déroulent des procédures
+                  linéaires qui ne préparent pas au chaos réel d'un lundi matin.
+                  Cela se traduit souvent par des techniciens démunis face à
+                  l'ambiguïté, incapables de prioriser sous pression. Il est
+                  essentiel de simuler des environnements dynamiques où les
+                  incidents évoluent, se contredisent, et où chaque décision compte.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="info-card">
+                <div class="card-icon">
+                  <i class="bi bi-tools"></i>
+                </div>
+                <h4>
+                  La Solution : Une Cyber Range Helpdesk Conteneurisée et
+                  Automatisée
+                </h4>
+                <p>
+                  Ma solution se positionne comme une véritable **"Cyber Range
+                  Helpdesk"**. Elle s'appuie sur une architecture avancée et
+                  intégrée :
+                  <br />
+                  1. **Conteneurisation (Docker/Docker Compose)** : Pour
+                  isoler les environnements de simulation et les services associés (web,
+                  BDD, LDAP simulé) de chaque apprenant, garantissant des
+                  sessions uniques et réinitialisables.
+                  <br />
+                  2. **Virtualisation (VirtualBox/KVM)** : Pour les machines
+                  clientes et serveurs impactées par les incidents, permettant
+                  la manipulation de systèmes d'exploitation réels (Windows,
+                  Linux) et l'exécution d'outils de diagnostic.
+                  <br />
+                  3. **Automatisation (Ansible/Shell Scripting)** : Des
+                  playbooks Ansible orchestrent le déploiement rapide des
+                  scénarios, l'injection de problèmes et la remise à zéro des
+                  environnements après chaque exercice.
+                  <br />
+                  Cette synergie technologique offre une plateforme immersive
+                  où les erreurs sont des opportunités d'apprentissage, sans
+                  impact sur la production.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="container section-title mt-5" data-aos="fade-up">
+            <span class="description-title">Vision Stratégique</span>
+            <h3>
+              Pourquoi la Simulation est Essentielle pour un Helpdesk Performant
+            </h3>
+          </div>
+
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12">
+              <div class="description-box">
+                <p>
+                  L'approche "Simulation First" d'IncidentForge transforme radicalement la pédagogie.
+                  Au lieu d'apprendre "où cliquer", les techniciens apprennent "pourquoi agir".
+                  La plateforme agit comme un catalyseur de maturité professionnelle.
+                </p>
+                <div class="row mt-4">
+                  <div class="col-md-6">
+                    <div class="feature-item">
+                      <i class="bi bi-person-check"></i>
+                      <h5>Maîtrise du Raisonnement Opérationnel</h5>
+                      <p>
+                        Les apprenants développent une méthode d'investigation rigoureuse :
+                        collecte de faits, formulation d'hypothèses, tests isolés. Ils apprennent
+                        à distinguer le symptôme de la cause racine.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="feature-item">
+                      <i class="bi bi-book"></i>
+                      <h5>Intelligence Situationnelle & Priorisation</h5>
+                      <p>
+                        Dans le chaos simulé, tout semble urgent. IncidentForge entraîne à
+                        hiérarchiser les tâches selon l'impact business réel et non la pression
+                        émotionnelle de l'utilisateur.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="feature-item">
+                      <i class="bi bi-star-fill"></i>
+                      <h5>Soft Skills et Gestion de Crise</h5>
+                      <p>
+                        Simuler des utilisateurs stressés ou vagues force le technicien à
+                        adapter son discours. La compétence technique ne suffit plus :
+                        l'empathie et la clarté deviennent des outils de résolution.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="feature-item">
+                      <i class="bi bi-currency-dollar"></i>
+                      <h5>
+                        Impact Organisationnel Mesurable
+                      </h5>
+                      <p>
+                        Des techniciens mieux formés signifient une réduction directe du MTTR
+                        (Temps Moyen de Résolution) et une diminution des escalades inutiles
+                        vers les niveaux 2 et 3, optimisant ainsi les coûts globaux du support.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container section-title mt-5" data-aos="fade-up">
+            <span class="description-title">Feuille de Route</span>
+            <h3>
+              Étapes Clés de la Réalisation du Projet IncidentForge (Expert en
+              Architecture Réseau)
+            </h3>
+            <p class="lead text-center text-muted">
+              Un projet structuré en phases clés, de la conception à
+              l'évolution continue, pour garantir une plateforme de formation
+              robuste et pertinente.
+            </p>
+          </div>
+
+          <div class="row gy-4 portfolio-container">
+            <div class="col-lg-4 col-md-6 portfolio-item animate-item">
+              <div class="portfolio-wrap">
+                <a href="#" class="img-link" aria-label="Phase de conception de l'architecture de la plateforme">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Architecture+GLPI+Training"
+                    alt="Diagramme de conception architecturale de la plateforme de formation intégrant GLPI"
+                    class="img-fluid" loading="lazy" />
+                </a>
+                <div class="portfolio-info">
+                  <div class="content">
+                    <span class="category">Phase 1</span>
+                    <h4>
+                      <i class="bi bi-clipboard-data"></i> Conception
+                      Architecturale et Spécifications
+                    </h4>
+                    <p class="card-text">
+                      **Description :** Définition de l'architecture globale
+                      (infrastructure, applications, réseau, sécurité) de la
+                      plateforme. Choix des technologies de simulation (Moteur d'incidents customisé,
+                      solution de virtualisation, outils d'automatisation). Élaboration des diagrammes de réseau,
+                      des plans d'adressage IP et des politiques de
+                      segmentation pour assurer l'isolation des environnements
+                      d'apprentissage.
+                    </p>
+                    <p class="card-text">
+                      **Livrables :** Document d'architecture technique
+                      détaillé, schémas réseau logiques et physiques, plan de
+                      déploiement du moteur de simulation, matrice des scénarios
+                      d'incidents.
+                    </p>
+                  </div>
+                  <div class="portfolio-links">
+                    <a href="#" title="Voir les spécifications"
+                      aria-label="Lien vers les spécifications techniques de la phase de conception"><i
+                        class="bi bi-eye"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item animate-item">
+              <div class="portfolio-wrap">
+                <a href="#" class="img-link" aria-label="Mise en place de l'infrastructure physique et virtuelle">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Infrastructure+Setup+VMs"
+                    alt="Configuration de serveurs et d'hyperviseurs pour la plateforme de virtualisation des labs"
+                    class="img-fluid" loading="lazy" />
+                </a>
+                <div class="portfolio-info">
+                  <div class="content">
+                    <span class="category">Phase 2</span>
+                    <h4>
+                      <i class="bi bi-server"></i> Déploiement du Socle
+                      Infrastructurel
+                    </h4>
+                    <p class="card-text">
+                      **Description :** Installation et configuration des
+                      serveurs physiques ou VMs hôtes, des hyperviseurs
+                      (VirtualBox/KVM), et du réseau sous-jacent. Mise en
+                      place de Docker et Docker Compose pour la
+                      conteneurisation des services. Configuration des
+                      services d'infrastructure partagés comme l'annuaire
+                      OpenLDAP/FreeIPA pour la gestion des utilisateurs
+                      simulés et réels. Validation de la connectivité réseau
+                      inter-composants et de la sécurité des accès.
+                      Préparation de l'environnement pour le déploiement du moteur de simulation.
+                    </p>
+                    <p class="card-text">
+                      **Livrables :** Infrastructure physique/virtuelle
+                      opérationnelle, services de base configurés, rapports de
+                      tests de connectivité et de sécurité.
+                    </p>
+                  </div>
+                  <div class="portfolio-links">
+                    <a href="#" title="Voir les détails de l'infrastructure"
+                      aria-label="Lien vers les détails de la mise en place de l'infrastructure"><i
+                        class="bi bi-info-circle"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item animate-item">
+              <div class="portfolio-wrap">
+                <a href="#" class="img-link"
+                  aria-label="Intégration du système de ticketing GLPI et création des laboratoires virtuels">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Lab+Scenarios"
+                    alt="Interface GLPI avec des tickets liés à des problèmes dans les laboratoires virtuels"
+                    class-id="img-fluid" loading="lazy" />
+                </a>
+                <div class="portfolio-info">
+                  <div class="content">
+                    <span class="category">Phase 3</span>
+                    <h4>
+                      <i class="bi bi-ticket-perforated"></i> Développement du Moteur
+                      d'Incidents et Scénarisation
+                    </h4>
+                    <p class="card-text">
+                      **Description :** Installation et configuration du cœur de la plateforme de simulation.
+                      Création des entités, profils et workflows d'incidents. Intégration avec l'annuaire pour
+                      la gestion des utilisateurs / acteurs. Création des premières
+                      images de machines virtuelles (Windows Client/Server,
+                      Linux Client/Server) et configuration des scénarios
+                      de 'Chaos' (ex: corruption de données, attaque réseau,
+                      panne critique).
+                      Développement des scripts d'automatisation (Ansible)
+                      pour le déploiement et la réinitialisation des
+                      environnements de lab à la demande.
+                    </p>
+                    <p class="card-text">
+                      **Livrables :** Moteur de simulation fonctionnel,
+                      scénarios de formation pré-configurés,
+                      images de VM de base avec problèmes ciblés,
+                      scripts d'automatisation opérationnels.
+                    </p>
+                  </div>
+                  <div class="portfolio-links">
+                    <a href="#" title="Voir la progression de l'intégration"
+                      aria-label="Lien vers la progression de l'intégration de GLPI et des labs"><i
+                        class="bi bi-graph-up"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item animate-item">
+              <div class="portfolio-wrap">
+                <a href="#" class="img-link"
+                  aria-label="Développement de l'interface utilisateur et des outils de suivi">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=User+Interface+GLPI+Tracking"
+                    alt="Maquette de l'interface utilisateur de la plateforme de formation, intégrant des liens vers GLPI et des tableaux de bord de suivi."
+                    class-id="img-fluid" loading="lazy" />
+                </a>
+                <div class="portfolio-info">
+                  <div class="content">
+                    <span class="category">Phase 4</span>
+                    <h4>
+                      <i class="bi bi-laptop"></i> Développement de l'IHM et
+                      Modules de Suivi
+                    </h4>
+                    <p class="card-text">
+                      **Description :** Développement d'une interface web
+                      immersive (HTML/CSS/JS avec un framework backend) permettant aux apprenants de
+                      lancer des scénarios, d'accéder à leur environnement de crise,
+                      de visualiser leur progression et d'accéder aux ressources.
+                      Implémentation des outils de suivi pour les formateurs, leur permettant de superviser
+                      l'activité des apprenants et d'évaluer leur performance sur la résolution
+                      des scénarios.
+                    </p>
+                    <p class="card-text">
+                      **Livrables :** Interface utilisateur fonctionnelle,
+                      modules de suivi et de reporting de base, documentation
+                      d'utilisation pour apprenants et formateurs.
+                    </p>
+                  </div>
+                  <div class="portfolio-links">
+                    <a href="#" title="Découvrir l'interface"
+                      aria-label="Lien vers une démonstration de l'interface utilisateur"><i
+                        class="bi bi-display"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item animate-item">
+              <div class="portfolio-wrap">
+                <a href="#" class="img-link" aria-label="Phase de tests, d'optimisation et de déploiement pilote">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Testing+GLPI+Scenarios"
+                    alt="Équipe effectuant des tests des scénarios de formation dans GLPI et les environnements virtuels."
+                    class-id="img-fluid" loading="lazy" />
+                </a>
+                <div class="portfolio-info">
+                  <div class="content">
+                    <span class="category">Phase 5</span>
+                    <h4>
+                      <i class="bi bi-check-all"></i> Tests, Optimisation et
+                      Déploiement Pilote
+                    </h4>
+                    <p class="card-text">
+                      **Description :** Phase intensive de tests fonctionnels
+                      et de performance de l'ensemble de la plateforme,
+                      incluant la robustesse du moteur de simulation sous charge et
+                      l'efficacité des scénarios. Optimisation de
+                      l'automatisation, des performances réseau et de la
+                      sécurité. Déploiement pilote avec un groupe restreint
+                      d'utilisateurs pour recueillir des retours critiques sur
+                      l'expérience d'apprentissage.
+                      Réajustements basés sur les observations et les
+                      remontées des utilisateurs pilotes.
+                    </p>
+                    <p class="card-text">
+                      **Livrables :** Rapports de tests (fonctionnels,
+                      performance, sécurité), versions optimisées des
+                      composants, retour d'expérience du pilote, plan
+                      d'amélioration continue.
+                    </p>
+                  </div>
+                  <div class="portfolio-links">
+                    <a href="#" title="Voir les rapports de tests"
+                      aria-label="Lien vers les rapports de tests et les retours du pilote"><i
+                        class="bi bi-file-earmark-check"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 portfolio-item animate-item">
+              <div class="portfolio-wrap">
+                <a href="#" class="img-link"
+                  aria-label="Phase de maintenance, d'ajout de contenu et d'évolution de la plateforme">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=GLPI+Content+Updates"
+                    alt="Équipe travaillant sur des mises à jour de GLPI et l'ajout de nouveaux scénarios de formation."
+                    class-id="img-fluid" loading="lazy" />
+                </a>
+                <div class="portfolio-info">
+                  <div class="content">
+                    <span class="category">Phase 6</span>
+                    <h4>
+                      <i class="bi bi-arrow-repeat"></i> Maintenance et
+                      Évolution Continue
+                    </h4>
+                    <p class="card-text">
+                      **Description :** Suivi des performances et de la
+                      stabilité de la plateforme en production. Ajout régulier
+                      de nouveaux scénarios de formation basés sur l'évolution
+                      des technologies et les incidents réels. Mise à jour
+                      des versions des systèmes/applications
+                      intégrés pour maintenir la pertinence des environnements
+                      de lab. Collecte continue de feedback pour des
+                      améliorations itératives.
+                    </p>
+                    <p class="card-text">
+                      **Livrables :** Cycles de mise à jour réguliers,
+                      nouveaux scénarios de formation publiés, rapports de
+                      satisfaction des utilisateurs, roadmap d'évolution des
+                      fonctionnalités de simulation.
+                    </p>
+                  </div>
+                  <div class="portfolio-links">
+                    <a href="#" title="Voir la roadmap d'évolution"
+                      aria-label="Lien vers la roadmap d'évolution continue de la plateforme"><i
+                        class="bi bi-calendar-event"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-gallery" data-aos="fade-up" data-aos-delay="200">
+            <h3>Aperçus du Projet : La Plateforme IncidentForge en Action</h3>
+            <div class="row g-3">
+              <div class="col-6 col-md-3">
+                <div class="gallery-item">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Creation+Ticket+Incident"
+                    alt="Exemple de création de ticket d'incident simulé, avec description vague de l'utilisateur."
+                    class-id="img-fluid glightbox" loading="lazy" />
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="gallery-item">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Vue+Ensemble+Parc"
+                    alt="Vue d'ensemble de l'infrastructure simulée, montrant les nœuds affectés par la panne."
+                    class-id="img-fluid glightbox" loading="lazy" />
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="gallery-item">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Base+de+Connaissances"
+                    alt="Section de la base de connaissances permettant aux techniciens de rechercher des solutions."
+                    class-id="img-fluid glightbox" loading="lazy" />
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="gallery-item">
+                  <img src="https://placehold.co/600x400/131d33/e4edf5?text=Rapports+Performance"
+                    alt="Tableau de bord de rapports, affichant la performance du technicien (MTTR, Communication)."
+                    class-id="img-fluid glightbox" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="key-features" data-aos="fade-up" data-aos-delay="200">
+            <h3>Bénéfices Stratégiques et Perspective d'Évolution</h3>
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="feature-item">
+                  <i class="bi bi-person-workspace"></i>
+                  <h5>Immersion Totale</h5>
+                  <p>
+                    Les apprenants plongent dans des environnements réalistes où
+                    chaque action a une conséquence, renforçant leur capacité
+                    d'adaptation.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-item">
+                  <i class="bi bi-arrows-fullscreen"></i>
+                  <h5>Scénarios "Chaos" Complets</h5>
+                  <p>
+                    Permet de gérer un incident de A à Z : de l'alerte confuse
+                    d'un utilisateur jusqu'au rétablissement complet du service
+                    et au post-mortem.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-item">
+                  <i class="bi bi-graph-up"></i>
+                  <h5>Évaluation Comportementale</h5>
+                  <p>
+                    Les performances sont évaluées non seulement sur la résolution
+                    technique, mais aussi sur la communication, la méthodologie
+                    et la gestion du stress.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-navigation" data-aos="fade-up" data-aos-delay="300">
+            <a href="#" class="prev-project">
+              <i class="bi bi-arrow-left-short"></i>
+              <span>Projet Précédent : Système de Gestion des Assets IT</span>
             </a>
-            <p>
-              Bienvenue dans mon espace en ligne. Je suis Jeanluck, un chercheur
-              passionné en cybersécurité et pentester. Ici, je partage mes
-              analyses, mes explorations techniques approfondies et mes
-              découvertes dans le monde en constante évolution de la sécurité
-              numérique.
-            </p>
-            <div class="social-links d-flex mt-4">
-              <a href="https://.com/IrJeanl"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://github.com/Jeanluck"
-                ><i class="bi bi-github"></i
-              ></a>
-              <a href="https://linkedin.com/in/jeanluckndato"
-                ><i class="bi bi-linkedin"></i
-              ></a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Catégories de Projects</h4>
-            <ul>
-              <li><a href="#">Tests d'intrusion</a></li>
-              <li><a href="#">Recherche de Vulnérabilités</a></li>
-              <li><a href="#">Analyse de Malware</a></li>
-              <li><a href="#">Sécurité Réseau</a></li>
-              <li><a href="#">Réponse aux Incidents</a></li>
-            </ul>
-          </div>
-
-          <div
-            class="col-lg-3 col-md-6 footer-contact text-center text-md-start"
-          >
-            <h4>Connectez-vous avec moi</h4>
-            <p>
-              Vous avez une question, une idée de collaboration ou souhaitez
-              simplement échanger sur la cybersécurité ?
-            </p>
-            <p class="mt-4">
-              <strong>Email :</strong>
-              <span>jeanluckndato.@gmail.com</span>
-            </p>
+            <a href="#projects" class="all-projects">
+              <i class="bi bi-grid-3x3-gap"></i>
+              <span>Tous les Projets</span>
+            </a>
+            <a href="#" class="next-project">
+              <span>Projet Suivant : Implémentation d'un SD-WAN pour PME</span>
+              <i class="bi bi-arrow-right-short"></i>
+            </a>
           </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <div class="container copyright text-center mt-4">
-        <p>
-          © <span>Droit d'auteur</span>
-          <strong class="px-1 sitename">Jeanluck Ndato</strong>
-          <span>Tous droits réservés</span>
-        </p>
-        <div class="credits">
-          Conçu & Maintenu par
-          <a href="https://github.com/JeanluckNdato">INVERSEHACKER</a>
-        </div>
-      </div>
-    </footer>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        new Swiper(".carousel-container", {
-          slidesPerView: 1,
-          spaceBetween: 30,
-          loop: true,
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Swiper(".carousel-container", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+          delay: 3000, // Défilement automatique toutes les 3 secondes
+          disableOnInteraction: false, // Continue le défilement même après interaction de l'utilisateur
+        },
+        // Breakpoints responsives
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
           },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 50,
           },
-          autoplay: {
-            delay: 3000, // Défilement automatique toutes les 3 secondes
-            disableOnInteraction: false, // Continue le défilement même après interaction de l'utilisateur
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 60,
           },
-          // Breakpoints responsives
-          breakpoints: {
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            992: {
-              slidesPerView: 3,
-              spaceBetween: 50,
-            },
-            1200: {
-              slidesPerView: 4,
-              spaceBetween: 60,
-            },
-          },
-        });
+        },
       });
-    </script>
+    });
+  </script>
 
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+  <footer id="footer" class="footer">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-6 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">Jeanluck Cyber Insights</span>
+          </a>
+          <p>
+            Bienvenue dans mon espace en ligne. Je suis Jeanluck, un chercheur
+            passionné en cybersécurité et pentester. Ici, je partage mes
+            analyses, mes explorations techniques approfondies et mes
+            découvertes dans le monde en constante évolution de la sécurité
+            numérique.
+          </p>
+          <div class="social-links d-flex mt-4">
+            <a href="https://.com/IrJeanl"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://github.com/Jeanluck"><i class="bi bi-github"></i></a>
+            <a href="https://linkedin.com/in/jeanluckndato"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
 
-    <div id="preloader"></div>
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Catégories de Projects</h4>
+          <ul>
+            <li><a href="#">Tests d'intrusion</a></li>
+            <li><a href="#">Recherche de Vulnérabilités</a></li>
+            <li><a href="#">Analyse de Malware</a></li>
+            <li><a href="#">Sécurité Réseau</a></li>
+            <li><a href="#">Réponse aux Incidents</a></li>
+          </ul>
+        </div>
 
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <div class="col-lg-3 col-md-6 footer-contact text-center text-md-start">
+          <h4>Connectez-vous avec moi</h4>
+          <p>
+            Vous avez une question, une idée de collaboration ou souhaitez
+            simplement échanger sur la cybersécurité ?
+          </p>
+          <p class="mt-4">
+            <strong>Email :</strong>
+            <span>jeanluckndato.@gmail.com</span>
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <script src="assets/js/main.js"></script>
-  </body>
+    <div class="container copyright text-center mt-4">
+      <p>
+        © <span>Droit d'auteur</span>
+        <strong class="px-1 sitename">Jeanluck Ndato</strong>
+        <span>Tous droits réservés</span>
+      </p>
+      <div class="credits">
+        Conçu & Maintenu par
+        <a href="https://github.com/JeanluckNdato">INVERSEHACKER</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Swiper(".carousel-container", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+          delay: 3000, // Défilement automatique toutes les 3 secondes
+          disableOnInteraction: false, // Continue le défilement même après interaction de l'utilisateur
+        },
+        // Breakpoints responsives
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          992: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 60,
+          },
+        },
+      });
+    });
+  </script>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
 </html>

@@ -6,49 +6,49 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #070d1a;
+  --background-color: #000000;
   /* Background color for the entire website, including individual sections */
-  --default-color: #e4edf5;
+  --default-color: #A9A9A9;
   /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #f2f8fe;
+  --heading-color: #FFFFFF;
   /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #10a3d7;
+  --accent-color: #007BFF;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #131825;
+  --surface-color: #000000;
   /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff;
+  --contrast-color: #FFFFFF;
   /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #e4edf5;
+  --nav-color: #A9A9A9;
   /* The default color of the main navmenu links */
-  --nav-hover-color: #10a3d7;
+  --nav-hover-color: #007BFF;
   /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: rgba(22, 29, 44, 0.95);
+  --nav-mobile-background-color: rgba(0, 0, 0, 0.95);
   /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: rgba(23, 30, 47, 0.95);
+  --nav-dropdown-background-color: rgba(0, 0, 0, 0.95);
   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: rgba(215, 226, 235, 0.645);
+  --nav-dropdown-color: #A9A9A9;
   /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ffffff;
+  --nav-dropdown-hover-color: #FFFFFF;
   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #111623;
-  --surface-color: #161c2a;
+  --background-color: #FFFFFF;
+  --surface-color: #FFFFFF;
 }
 
 .dark-background {
-  --background-color: #060606;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #252525;
-  --contrast-color: #ffffff;
+  --background-color: #000000;
+  --default-color: #A9A9A9;
+  --heading-color: #FFFFFF;
+  --surface-color: #000000;
+  --contrast-color: #FFFFFF;
 }
 
 /* Smooth scroll */
@@ -184,14 +184,14 @@
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Abel", sans-serif;
   --nav-font: "Mukta", sans-serif;
-  --background-color: #070d1a;
-  --default-color: #e4edf5;
-  --heading-color: #f2f8fe;
-  --accent-color: #10a3d7;
-  --surface-color: #131d33;
+  --background-color: #000000;
+  --default-color: #A9A9A9;
+  --heading-color: #FFFFFF;
+  --accent-color: #007BFF;
+  --surface-color: #000000;
   /* Définitions RGB pour les overlays (nécessaires pour les couleurs transparentes) */
-  --surface-color-rgb: 19, 29, 51;
-  --accent-color-rgb: 16, 163, 215;
+  --surface-color-rgb: 0, 0, 0;
+  --accent-color-rgb: 0, 123, 255;
 }
 
 /* Styles généraux pour le corps, si cette section est insérée directement.
