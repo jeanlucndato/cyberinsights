@@ -6,33 +6,40 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #000000;
-  /* Background color for the entire website, including individual sections */
-  --default-color: #A9A9A9;
-  /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #FFFFFF;
-  /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #007BFF;
-  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #000000;
-  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #FFFFFF;
-  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-color: #F1FAEE;
+  /* Fond de tes visuels, lecture reposante */
+  --default-color: #1D3557;
+  /* Default text color, Bleu Profond */
+  --heading-color: #1D3557;
+  /* Titres, logos, sérieux */
+  --accent-color: #F1A208;
+  /* Jaune Alerte - Mise en avant */
+  --surface-color: #FFFFFF;
+  /* Surface white to contrast with background */
+  --contrast-color: #1D3557;
+  /* Contrast text on accent backgrounds */
+  
+  /* Additional Branding Variables for ease of use */
+  --primary-color: #1D3557;
+  --secondary-color: #A8DADC;
+  --success-color: #2A9D8F;
+  --warning-color: #F1A208;
+  --danger-color: #E63946;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #A9A9A9;
+  --nav-color: #1D3557;
   /* The default color of the main navmenu links */
-  --nav-hover-color: #007BFF;
+  --nav-hover-color: #F1A208;
   /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: rgba(0, 0, 0, 0.95);
+  --nav-mobile-background-color: rgba(241, 250, 238, 0.95);
   /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: rgba(0, 0, 0, 0.95);
+  --nav-dropdown-background-color: rgba(241, 250, 238, 0.95);
   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #A9A9A9;
+  --nav-dropdown-color: #1D3557;
   /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #FFFFFF;
+  --nav-dropdown-hover-color: #F1A208;
   /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
@@ -40,15 +47,15 @@
 
 .light-background {
   --background-color: #FFFFFF;
-  --surface-color: #FFFFFF;
+  --surface-color: #F1FAEE;
 }
 
 .dark-background {
-  --background-color: #000000;
-  --default-color: #A9A9A9;
-  --heading-color: #FFFFFF;
-  --surface-color: #000000;
-  --contrast-color: #FFFFFF;
+  --background-color: #1D3557;
+  --default-color: #F1FAEE;
+  --heading-color: #F1FAEE;
+  --surface-color: #13243D; /* slightly darker than 1D3557 */
+  --contrast-color: #F1FAEE;
 }
 
 /* Smooth scroll */
@@ -184,14 +191,14 @@
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Abel", sans-serif;
   --nav-font: "Mukta", sans-serif;
-  --background-color: #000000;
-  --default-color: #A9A9A9;
-  --heading-color: #FFFFFF;
-  --accent-color: #007BFF;
-  --surface-color: #000000;
+  --background-color: #F1FAEE;
+  --default-color: #1D3557;
+  --heading-color: #1D3557;
+  --accent-color: #F1A208;
+  --surface-color: #FFFFFF;
   /* Définitions RGB pour les overlays (nécessaires pour les couleurs transparentes) */
-  --surface-color-rgb: 0, 0, 0;
-  --accent-color-rgb: 0, 123, 255;
+  --surface-color-rgb: 255, 255, 255;
+  --accent-color-rgb: 241, 162, 8;
 }
 
 /* Styles généraux pour le corps, si cette section est insérée directement.
@@ -591,7 +598,7 @@ h6 {
 ------------------------------*/
 .php-email-form .error-message {
   display: none;
-  background: #df1529;
+  background: var(--danger-color);
   color: #ffffff;
   text-align: left;
   padding: 15px;
@@ -602,7 +609,7 @@ h6 {
 .php-email-form .sent-message {
   display: none;
   color: #ffffff;
-  background: #059652;
+  background: var(--success-color);
   text-align: center;
   padding: 15px;
   margin-bottom: 24px;
