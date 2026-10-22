@@ -26,14 +26,43 @@
    * Mobile nav toggle
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const navMenu = document.querySelector('#navmenu');
+  let navBackdrop;
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  function setMobileNav(open) {
+    if (!mobileNavToggleBtn || !navMenu) return;
+    const body = document.body;
+    body.classList.toggle('mobile-nav-active', open);
+    mobileNavToggleBtn.classList.toggle('bi-list', !open);
+    mobileNavToggleBtn.classList.toggle('bi-x', open);
+    mobileNavToggleBtn.setAttribute('aria-expanded', String(open));
+    mobileNavToggleBtn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+
+    if (open) {
+      if (!navBackdrop) {
+        navBackdrop = document.createElement('button');
+        navBackdrop.type = 'button';
+        navBackdrop.className = 'nav-backdrop';
+        navBackdrop.setAttribute('aria-label', 'Fermer le menu');
+        navBackdrop.addEventListener('click', () => setMobileNav(false));
+        body.appendChild(navBackdrop);
+      }
+      requestAnimationFrame(() => navMenu.querySelector('a')?.focus());
+    } else {
+      navBackdrop?.remove();
+      navBackdrop = null;
+      mobileNavToggleBtn.focus();
+    }
   }
   if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    mobileNavToggleBtn.addEventListener('click', () => {
+      setMobileNav(!document.body.classList.contains('mobile-nav-active'));
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && document.body.classList.contains('mobile-nav-active')) {
+        setMobileNav(false);
+      }
+    });
   }
 
   /**
@@ -42,7 +71,7 @@
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
+        setMobileNav(false);
       }
     });
 
@@ -84,7 +113,7 @@
 
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
     const progressElement = document.getElementById('scroll-progress');
     if (progressElement) {
       progressElement.style.width = scrolled + '%';
@@ -104,11 +133,38 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+      });
+    });
+  }
+
+  document.querySelectorAll('[data-contact-form]').forEach(form => {
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const fields = new FormData(form);
+      const subject = String(fields.get('subject') || 'Contact depuis mon portfolio').trim();
+      const body = [
+        `Nom : ${String(fields.get('name') || '').trim()}`,
+        `E-mail : ${String(fields.get('email') || '').trim()}`,
+        '',
+        String(fields.get('message') || '').trim()
+      ].join('\n');
+      const recipient = form.dataset.contactEmail;
+      if (!recipient) return;
+
+      const sentMessage = form.querySelector('.sent-message');
+      if (sentMessage) {
+        sentMessage.textContent = 'Votre application de messagerie va s’ouvrir avec le message prérempli. Vous pourrez le relire avant de l’envoyer.';
+        sentMessage.classList.add('is-visible');
+      }
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   });
 
@@ -119,13 +175,15 @@
    * Animation on scroll function and init
    */
   function aosInit() {
+    if (typeof AOS === 'undefined') return;
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: true,
       mirror: false,
       offset: 100,
-      delay: 50
+      delay: 50,
+      disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
     });
   }
   window.addEventListener('load', aosInit);
@@ -133,14 +191,12 @@
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') new PureCounter();
 
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  if (typeof GLightbox !== 'undefined') GLightbox({ selector: '.glightbox' });
 
   /**
    * Init isotope layout and filters
@@ -151,22 +207,28 @@
     let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
     let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function () {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+    const portfolioContainer = isotopeItem.querySelector('.isotope-container');
+    if (!portfolioContainer || typeof Isotope === 'undefined') return;
+    const arrange = selectedFilter => initIsotope?.arrange({ filter: selectedFilter });
+    const initLayout = () => {
+      initIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.isotope-item',
         layoutMode: layout,
         filter: filter,
         sortBy: sort
       });
-    });
+    };
+    if (typeof imagesLoaded !== 'undefined') imagesLoaded(portfolioContainer, initLayout);
+    else initLayout();
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
+    isotopeItem.querySelectorAll('.isotope-filters [data-filter]').forEach(function (filters) {
       filters.addEventListener('click', function () {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
+        isotopeItem.querySelectorAll('.isotope-filters [data-filter]').forEach(button => {
+          const active = button === filters;
+          button.classList.toggle('filter-active', active);
+          button.setAttribute('aria-pressed', String(active));
         });
+        arrange(this.getAttribute('data-filter'));
         if (typeof aosInit === 'function') {
           aosInit();
         }
@@ -179,8 +241,19 @@
    * Frequently Asked Questions Toggle
    */
   document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle, .faq-item .faq-header').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
+    faqItem.setAttribute('role', 'button');
+    faqItem.setAttribute('tabindex', '0');
+    faqItem.setAttribute('aria-expanded', String(faqItem.parentNode.classList.contains('faq-active')));
+    const toggleFaq = () => {
+      const open = faqItem.parentNode.classList.toggle('faq-active');
+      faqItem.setAttribute('aria-expanded', String(open));
+    };
+    faqItem.addEventListener('click', toggleFaq);
+    faqItem.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleFaq();
+      }
     });
   });
 
@@ -188,12 +261,19 @@
    * Init swiper sliders
    */
   function initSwiper() {
+    if (typeof Swiper === 'undefined') return;
     document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
+      const configElement = swiperElement.querySelector('.swiper-config');
+      if (!configElement) return;
+      let config;
+      try {
+        config = JSON.parse(configElement.innerHTML.trim());
+      } catch (error) {
+        console.error('Configuration du carrousel invalide.', error);
+        return;
+      }
 
-      if (swiperElement.classList.contains("swiper-tab")) {
+      if (swiperElement.classList.contains('swiper-tab') && typeof initSwiperWithCustomPagination === 'function') {
         initSwiperWithCustomPagination(swiperElement, config);
       } else {
         new Swiper(swiperElement, config);
@@ -211,7 +291,7 @@
       if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
           let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+          let scrollMarginTop = parseInt(getComputedStyle(section).scrollMarginTop, 10) || 0;
           window.scrollTo({
             top: section.offsetTop - parseInt(scrollMarginTop),
             behavior: 'smooth'

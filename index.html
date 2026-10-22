@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>JeanluckCyberinsights</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="Portfolio de Jeanluck Ndato : projets, études de cas et réalisations en cybersécurité, défense, pentest et renseignement sur les menaces." />
+    <meta name="keywords" content="cybersécurité, portfolio, défense, pentest, sécurité réseau, threat hunting, honeypot, Go, Linux" />
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon" />
@@ -59,7 +59,7 @@
             <li><a href="#contact">Contact</a></li>
             <li>
               <a
-                href="https://jeanlucndato.github.io/404/"
+                href="https://jeanlucndato.github.io/cyberinsights/"
                 target="_blank"
                 rel="noopener noreferrer"
                 >Mon Site Web</a
@@ -82,7 +82,7 @@
               >
             </li>
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          <button type="button" class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navmenu"></button>
         </nav>
       </div>
     </header>
@@ -193,7 +193,7 @@
                 </a>
                 <div class="portfolio-info">
                   <div class="content">
-                    <span class="category">Profil Professionnel</span>
+                    <span class="category">Curriculum vitæ</span>
                     <h4>Mon CV</h4>
                     <div class="portfolio-links">
                       <a
@@ -341,14 +341,12 @@
                   data-aos-delay="150"
                 >
                   <ul class="portfolio-filters isotope-filters">
-                    <li data-filter="*" class="filter-active">
-                      Tous les Projets
-                    </li>
-                    <li data-filter=".filter-pentesting">Pentesting</li>
-                    <li data-filter=".filter-research">Recherche</li>
-                    <li data-filter=".filter-tools">Outils Personnalisés</li>
-                    <li data-filter=".filter-forensics">Analyse Forensique</li>
-                    <li data-filter=".filter-deception">Cyber Deception</li>
+                    <li><button type="button" class="filter-active" data-filter="*" aria-pressed="true">Tous les projets</button></li>
+                    <li><button type="button" data-filter=".filter-pentesting" aria-pressed="false">Pentest</button></li>
+                    <li><button type="button" data-filter=".filter-research" aria-pressed="false">Recherche</button></li>
+                    <li><button type="button" data-filter=".filter-tools" aria-pressed="false">Outils personnalisés</button></li>
+                    <li><button type="button" data-filter=".filter-forensics" aria-pressed="false">Analyse forensique</button></li>
+                    <li><button type="button" data-filter=".filter-deception" aria-pressed="false">Cyberdéception</button></li>
                   </ul>
                 </div>
               </div>
@@ -542,7 +540,7 @@
                           <h4>Ingénierie Sociale Offensive</h4>
                           <div class="portfolio-links">
                             <a
-                              href="assets/img/phishing/PHISHING.jpg"
+                              href="assets/img/Phishing/PHISHING.jpg"
                               class="glightbox"
                               title="phishing attack simulation"
                               ><i class="bi bi-plus-lg"></i
@@ -660,9 +658,9 @@
                     <h4>Mon Profil Professionnel</h4>
                     <p>
                       <a
-                        href="https://jeanlucndato.github.io/resume/"
+                        href="https://linkedin.com/in/jeanluckndato"
                         target="_blank"
-                        >LinkedIn Profile</a
+                        >Profil LinkedIn</a
                       >
                     </p>
                   </div>
@@ -710,8 +708,8 @@
               <div class="social-links-panel">
                 <h5>Suivez-moi sur les Réseaux</h5>
                 <div class="social-icons">
-                  <a href="#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                  <a href="https://x.com/IrJeanl" target="_blank" rel="noopener noreferrer" aria-label="Profil X"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+                  <a href="https://linkedin.com/in/jeanluckndato" target="_blank" rel="noopener noreferrer" aria-label="Profil LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
                   <a href="https://github.com/jeanlucndato"
                     ><i class="bi bi-github"></i
                   ></a>
@@ -722,6 +720,7 @@
             <div class="contact-form-panel">
               <div class="map-container">
                 <iframe
+                  title="Carte de localisation à Goma"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63810.342162609355!2d29.166908387517314!3d-1.6587691713874368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dd0f5ff03ccf71%3A0x8702d152f9f905e7!2sGoma!5e0!3m2!1sfr!2scd!4v1749121519607!5m2!1sfr!2scd"
                   width="100%"
                   height="100%"
@@ -739,11 +738,7 @@
                   concernant des projets, des demandes d'informations ou des
                   opportunités.
                 </p>
-                <form
-                  action="forms/contact.php"
-                  method="post"
-                  class="php-email-form"
-                >
+                <form id="contact-form" data-contact-form data-contact-email="jeanlucndato@gmail.com" class="contact-form">
                   <div class="form-floating mb-3">
                     <input
                       type="text"
@@ -795,15 +790,13 @@
 
                   <div class="my-3">
                     <div class="loading">Chargement</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">
-                      Votre message a été envoyé. Merci !
-                    </div>
+                    <div class="error-message" role="alert"></div>
+                    <div class="sent-message" role="status" aria-live="polite"></div>
                   </div>
 
                   <div class="d-grid">
                     <button type="submit" class="btn-submit">
-                      Envoyer le Message <i class="bi bi-send-fill ms-2"></i>
+                      Préparer un e-mail <i class="bi bi-send-fill ms-2"></i>
                     </button>
                   </div>
                 </form>
@@ -830,8 +823,8 @@
               numérique.
             </p>
             <div class="social-links d-flex mt-4">
-              <a href="https://.com/IrJeanl"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://github.com/Jeanluck"
+              <a href="https://x.com/IrJeanl"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://github.com/jeanlucndato"
                 ><i class="bi bi-github"></i
               ></a>
               <a href="https://linkedin.com/in/jeanluckndato"
@@ -843,11 +836,11 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Catégories de Projects</h4>
             <ul>
-              <li><a href="#">Tests d'intrusion</a></li>
-              <li><a href="#">Recherche de Vulnérabilités</a></li>
-              <li><a href="#">Analyse de Malware</a></li>
-              <li><a href="#">Sécurité Réseau</a></li>
-              <li><a href="#">Réponse aux Incidents</a></li>
+              <li><a href="index.html#portfolio">Tests d'intrusion</a></li>
+              <li><a href="index.html#portfolio">Recherche de Vulnérabilités</a></li>
+              <li><a href="index.html#portfolio">Analyse de Malware</a></li>
+              <li><a href="index.html#portfolio">Sécurité Réseau</a></li>
+              <li><a href="index.html#portfolio">Réponse aux Incidents</a></li>
             </ul>
           </div>
 
@@ -861,7 +854,7 @@
             </p>
             <p class="mt-4">
               <strong>Email :</strong>
-              <span>jeanluckndato.@gmail.com</span>
+              <a href="mailto:jeanlucndato@gmail.com">jeanlucndato@gmail.com</a>
             </p>
           </div>
         </div>
@@ -875,7 +868,7 @@
         </p>
         <div class="credits">
           Conçu & Maintenu par
-          <a href="https://github.com/JeanluckNdato">INVERSEHACKER</a>
+          <a href="https://github.com/jeanlucndato">INVERSEHACKER</a>
         </div>
       </div>
     </footer>
