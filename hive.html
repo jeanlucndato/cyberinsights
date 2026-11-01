@@ -609,6 +609,35 @@
         <div class="col-lg-6"><figure class="deepdive-card h-100 p-3"><a href="assets/img/hive/Hive%20Decoy%20website.png" class="glightbox" data-gallery="hive"><img src="assets/img/hive/Hive%20Decoy%20website.png" alt="Site leurre InverseHacker affiché dans l’aperçu du tableau de bord Hive" class="img-fluid rounded" loading="lazy"></a><figcaption class="mt-3"><strong>Site leurre dans la console</strong><br><span class="text-white-50">Aperçu du site servi par le capteur HTTP.</span></figcaption></figure></div>
         <div class="col-lg-8 mx-auto"><figure class="deepdive-card h-100 p-3"><a href="assets/img/hive/Decoy%20website%20landing%20page.png" class="glightbox" data-gallery="hive"><img src="assets/img/hive/Decoy%20website%20landing%20page.png" alt="Page d’accueil responsive du site leurre InverseHacker" class="img-fluid rounded" loading="lazy"></a><figcaption class="mt-3"><strong>Page d’accueil du leurre HTTP</strong><br><span class="text-white-50">Les valeurs du formulaire sont écartées ; les interactions sont consignées comme événements.</span></figcaption></figure></div>
       </div></div></section>
+      <section class="hive-section hive-section-dark">
+        <div class="container">
+          <div class="row mb-4">
+            <div class="col-lg-8">
+              <p class="hive-section-title">Démonstration vidéo</p>
+              <h2 class="hive-section-heading">Voir Hive <span class="accent">en action</span></h2>
+              <p class="hive-section-lead">Cette vidéo illustre le fonctionnement global du honeypot, de l'interaction avec les services leurres jusqu'à la remontée des événements dans la console opérateur.</p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="deepdive-card p-3">
+                <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
+                  <video controls preload="metadata" poster="assets/img/hive/Hive%20dashboard.png">
+                    <source src="assets/img/hive/video%20demo%20how%20it%20works%20honeypot.mp4" type="video/mp4">
+                    Votre navigateur ne prend pas en charge la lecture de vidéos.
+                  </video>
+                </div>
+                <div class="mt-3 text-center">
+                  <span class="text-white-50"><i class="bi bi-play-circle me-1"></i> Démonstration du parcours d'investigation et des capteurs Go</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       <section id="lancement" class="hive-section hive-section-dark"><div class="container"><div class="row mb-4"><div class="col-lg-9"><p class="hive-section-title">Prise en main</p><h2 class="hive-section-heading">Lancer Hive <span class="accent">en laboratoire</span></h2><p class="hive-section-lead">Deux modes sont documentés : le lancement local pour explorer et développer, ou Docker Compose pour démarrer un profil conteneurisé. Dans les deux cas, les ports publiés restent liés à la boucle locale par défaut.</p></div></div><div class="row g-4">
         <div class="col-lg-6"><div class="deepdive-card h-100"><div class="card-icon-wrap icon-amber"><i class="bi bi-1-circle"></i></div><h4>1. Préparer l’environnement</h4><p>Cloner le dépôt Hive, puis installer Go <strong>1.26.4 ou supérieur</strong> et Node.js <strong>20.19+ ou 22.12+</strong> avec npm.</p><pre><code>git clone https://github.com/jeanlucndato/advanced-honeypot-network.git
 cd advanced-honeypot-network</code></pre><a class="btn btn-warning" href="https://github.com/jeanlucndato/advanced-honeypot-network" target="_blank" rel="noopener"><i class="bi bi-github me-2"></i>Voir le dépôt Hive sur GitHub</a><p class="small mt-3 mb-0">Le dépôt du portfolio affiché ici contient la page de présentation ; le dépôt Hive contient le code et le lanceur.</p></div></div>
